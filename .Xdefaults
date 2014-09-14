@@ -1,0 +1,63 @@
+*Rxvt*font: 		xft:Terminess Powerline:pixelsize=10
+*Rxvt*scrollBar:	false
+*Rxvt*imLocale:		en_US.UTF-8
+*Rxvt*loginShell:	true
+*Rxvt*saveLines:	512
+*Rxvt*boldMode:		true
+*Rxvt*inheritPixmap:	false
+*Rxvt*xftAntialias:	true
+*Rxvt*jumpScroll:	false
+*Rxvt*internalBorder:	2
+*Rxvt*borderless:	true
+*Rxvt.url-launcher:	/usr/bin/firefox
+
+!*background: #4e4e4e
+!*foreground: #f6f3e8
+!black
+!*color0:  #4e4e4e
+!*color8:  #7c7c7c
+!red
+!*color1:  #ff6c60
+!*color9:  #ffb6b0
+!green
+!*color2:  #a8ff60
+!*color10: $ceffab
+!yellow
+!*color3:  #ffffb6
+!*color11: #ffffcb
+!blue
+!*color4:  #96cbfe
+!*color12: #b5dcfe
+!magenta
+!*color5:  #ff73fd
+!*color13: #ff9cfe
+!cyan
+!*color6:  #c6c5fe
+!*color14: #dfdffe
+!white
+!*color7:  #eeeeee
+!*color15: #ffffff
+
+URxvt*.depth: 32
+URxvt*.background: [80]#181818
+!*background:           #181818
+*foreground:           #e0e0e0
+*color0:    #040404
+*color8:    #181818
+*color1:    #904866
+*color9:    #c894a7
+*color2:    #6c9141
+*color10:   #adc98c
+*color3:    #906d41
+*color11:   #c8ae8c
+*color4:    #486d8a
+*color12:   #93aec2
+*color5:    #6c488a
+*color13:   #ad94c2
+*color6:    #489166
+*color14:   #93c9a7
+*color7:    #e0e0e0
+*color15:   #ffffff
+
+!*Rxvt.transparent: true
+!*Rxvt.shading:     40
