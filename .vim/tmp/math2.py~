@@ -1,0 +1,13 @@
+
+"""
+gcd(n, m): find greatest common divisor (Euclid's Algorithm)
+"""
+def gcd(n, m):
+    r = n % m
+    if r == 0:
+        return m
+    return gcd(m, r)
+
+def lcm(n, m):
+    result = (n / gcd(n, m)) *m
+    return result

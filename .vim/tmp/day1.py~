@@ -1,0 +1,12 @@
+if __name__=="__main__":
+    with open("day1.txt") as in_file:
+        parens = in_file.readline()
+        parens = parens.strip('\n')
+        floor = 0
+        for i, f in enumerate(parens):
+            if f is '(': floor += 1
+            if f is ')': floor -= 1
+            if floor == -1: print i
+
+        print floor
+

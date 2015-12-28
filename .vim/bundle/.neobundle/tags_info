@@ -1,0 +1,17 @@
+indentLine
+lightline.vim
+mips.vim
+neobundle.vim
+syntastic
+tabular
+unite.vim
+vim-abolish
+vim-colors-solarized
+vim-easymotion
+vim-fugitive
+vim-misc
+vim-notes
+vim-repeat
+vim-sensible
+vim-surround
+vimfiler.vim

@@ -1,0 +1,34 @@
+from Numberjack import *
+
+if __name__=="__main__":
+    input_file = raw_input("file: ")
+    with open(input_file) as read_file:
+        b_size = int(read_file.readline())
+        square = Matrix(b_size, b_size, 1, b_size)
+        model = Model()
+        for i in range(b_size):
+            model.add(AllDiff(square.row[i]))
+            model.add(AllDiff(square.col[i]))
+        for line in read_file:
+            vals = line.strip('\n').strip(' ').split(' ')
+            res = int(vals[0])
+            op = vals[1]
+            cells = [square.flat[ord(x[0])-65+(int(x[1])-1)*b_size] for x in vals[2:]]
+
+            if (op == "*"):
+                model.add(reduce(operator.mul, cells) == res)
+            elif (op == "/"):
+                model.add((cells[0] / cells[1] == res) |
+                          (cells[1] / cells[0] == res))
+            elif (op == "-"):
+                model.add((cells[0] - cells[1] == res) |
+                          (cells[1] - cells[0] == res))
+            elif (op == "+"):
+                model.add(Sum(cells) == res)
+            else:
+                model.add(cells[0] == res)
+
+        solver = model.load("MiniSat")
+        if solver.solveAndRestart():
+            for i in square:
+                print ' '.join([x for x in i])

@@ -1,0 +1,23 @@
+# Fluss
+
+A game that's going to build up to some kind of game; creating a simple
+interface first and then prototyping different ideas and working from there.
+
+## Build instructions
+
+Alright, so I only know instructions on how to install with \*nix or Mac. 
+
+On a Mac install SDL2 with
+
+    brew install sdl2
+
+On \*nix, install using the instructions on the [SDL2](http://www.libsdl.org/)
+site.
+
+And then it's simple!
+
+    make
+    make run
+
+(alternatively, run just the latter, but that'll throw errors if the initial
+make fails).

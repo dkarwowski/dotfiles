@@ -1,0 +1,8 @@
+top:    add     $t0, $s0, $v0
+        beq     $t0, $zero, top
+        lw      $a3, 0 ($sp)
+        sub     $t9, $t0, $a3
+        sw      $t9, 4 ($sp)
+        j       top
+        addi    $t0, $zero, -7
+        slt     $s7, $t9, $t0

@@ -1,0 +1,17 @@
+#ifndef _COMMON_H_
+#define _COMMON_H_
+
+#ifdef DEBUG
+#define SDL_ASSERT_LEVEL 2
+#else
+#define SDL_ASSERT_LEVEL 1
+#endif
+
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+// credit to Google's Chromium project
+#define COUNT_OF(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))
+
+#endif

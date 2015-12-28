@@ -1,0 +1,190 @@
+// board given by byte sequence -
+// 0x|word|word|board...
+// 0x|rows|cols|board...
+// eg the board 5x5:
+// 00000
+// 01010
+// 01110
+// 01010
+// 00000
+// is (in hex, each pair = 1 byte)
+//         the 5x5          the board
+// ,---------------------, ,---------,
+// 00 00 00 05 00 00 00 05 02 9C A0 00
+// or, in binary (each line = 1 byte)
+// 0000 0000 -
+// 0000 0000  |
+// 0000 0000  |
+// 0000 0101  |-- makes makes the 5x5
+// 0000 0000  |
+// 0000 0000  |
+// 0000 0000  |
+// 0000 0101 -
+// 0000 0010 -
+// 1001 1100  |-- makes up the board itself
+// 1010 0000  |
+// 0000 0000 -
+
+#include <stdlib.h>
+#include <stdio.h>
+
+typedef unsigned char byte;
+
+int get(int *, int, int);
+int set(int *, int, int, int);
+void Life_Print(int *);
+int *Life(int *);
+
+// main function runs the glider
+int main(void) {
+    int *board = (int *)malloc(12);
+    board[0] = 5;
+    board[1] = 5;
+    byte *b = (byte *)board + 8;
+    b[0] = 0x01;
+    b[1] = 0x04;
+    b[2] = 0xE0;
+    b[3] = 0x00;
+
+    int cont;
+    do {
+        Life_Print(board);
+        printf("\n0 to quit: ");
+        getchar();
+        board = Life(board);
+    } while (cont != 0);
+
+    return 0;
+}
+
+int *Life(int *board)
+{
+    // do error checking first (no need in c)
+    // check rows and cols to be valid
+    int rows = board[0];
+    int cols = board[1];
+    if (rows <= 0 || cols <= 0)
+        return 0; // null pointer
+
+    // make an empty board, calc size first
+    int bits = rows * cols;            // needs at least this many bits
+    int bytes = bits/8 + (bits%8 > 0); // first divide to get whole bytes
+                                       // then add 1 if remainder, o.w. 0
+    // now we add 2 words to the size for the 5x5, then allocate
+    bytes += 8;
+    int *result = (int *)malloc(bytes);
+
+    // store the rows & cols in result
+    result[0] = rows;
+    result[1] = cols;
+
+    // now we have to get & set the values
+    for (int r = 0; r < rows; r++) {
+        for (int c = 0; c < cols; c++) {
+            int surrounding = 0;
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    if (i == 0 && j == 0)
+                        continue;
+                    // get whether alive or not
+                    int temp = get(board, c+j, r+i);
+                    surrounding += temp;
+                }
+            }
+
+            // write alives to the new board
+            int temp = get(board, c, r);
+            if (temp) {
+                if (2 == surrounding || surrounding == 3)
+                    set(result, c, r, 1);
+            } else {
+                if (3 == surrounding)
+                    set(result, c, r, 1);
+            }
+        }
+    }
+
+    return result;
+}
+
+int get(int *board, int x, int y) {
+    // pass a -1 to set to get the value
+    int result = set(board, x, y, -1);
+    return (result > 0);
+}
+
+int set(int *board, int x, int y, int val) {
+    // adjust x and y to be within bounds (allows for looping)
+    int rows = board[0];
+    int cols = board[1];
+    int r = y % rows;
+    int c = x % cols;
+
+    if (r < 0)
+        r += rows;
+    if (c < 0)
+        c += cols;
+
+    // get how many bytes in we're going
+    int bits = c + r*rows;
+    int bytes = bits / 8;
+    // number of bits into the bytes
+    bits = bits % 8;
+    byte *b = (byte *)board + 8; // board address moved 8 bytes in (2 ints in)
+                             // use byte to go byte-wise
+    // iterate in the number of bytes
+    for (int i = 0; i < bytes; i++)
+        b += 1;
+    byte result = *b; // load the value at this byte
+    byte mask = 0x80; // initialize mask
+    mask = mask >> bits; // shift right bits places, make sure it's logical
+
+    if (val < 0)
+        return (int)(result & mask);
+
+    result = result & ~mask; // keep everything but the bit we're setting
+    result = result | ((val == 1) ? mask : 0); // set mask if val == 1;
+    *b = result; // put result back in the board
+    return result; // return what we just set just in case
+}
+
+// just here for printing
+void Life_Print(int *board) {
+    int rows = board[0];
+    int cols = board[1];
+
+    byte *b = (byte *)board + 7;
+
+    int r  = 0;
+    int c  = 0;
+    int i  = 8;
+    byte buf = *b;
+    byte mask = 0x80;
+    int bufl  = 8;
+
+    printf("\n\n");
+    do {
+        i += 1;
+        mask = mask >> 1;
+        if (i >= bufl) {
+            b += 1;
+            i = 0;
+            buf = *b;
+            mask = 0x80;
+        }
+
+        byte t9 = buf & mask;
+        if (t9)
+            printf("|X");
+        else
+            printf("| ");
+
+        c += 1;
+        if (c < cols)
+            continue;
+
+        r += 1;
+        c = 0;
+        printf("|\n");
+    } while (r < rows);
+}

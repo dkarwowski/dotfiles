@@ -1,0 +1,23 @@
+import re
+
+def is_nice(string):
+    if not re.search(r"([aeiou][a-z]*){3}", string):
+        return False
+    if not re.search(re.compile(r"(.)\1"), string):
+        return False
+    if re.search(r"ab|cd|pq|xy", string):
+        return False
+    return True
+
+def is_nice2(string):
+    if not re.search(r"(..).*\1", string):
+        return False
+    if not re.search(r"(.).\1", string):
+        return False
+    return True
+
+if __name__=="__main__":
+    with open("day5.txt") as in_file:
+        print sum([1 for i in in_file if is_nice(i.strip('\n'))])
+    with open("day5.txt") as in_file:
+        print sum([1 for i in in_file if is_nice2(i.strip('\n'))])

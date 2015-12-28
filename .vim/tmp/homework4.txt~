@@ -1,0 +1,64 @@
+David Karwowski
+CSE 3666
+Homework 4 (Single State Architecture)
+
+1.   | Instruction | Registers | ALU | Data Mem | Branch | Jump | Control
+and  | +++++++++++ | +++++++++ | +++ |          |        |      | +++++++
+ori  | +++++++++++ | +++++++++ | +++ |          |        |      | +++++++
+sw   | +++++++++++ | +++++++++ | +++ | ++++++++ |        |      | +++++++
+beq  | +++++++++++ | +++++++++ | +++ |          | ++++++ |      | +++++++
+j    | +++++++++++ |           |     |          |        | ++++ |
+
+2.   | RegDst | Jump | Branch | MemRead | MemToReg | ALU  | MemWrite | ALUSrc | RegWrite
+and  | 1      | 0    | 0      | 0       | 0        | 0110 | 0        | 0      | 1
+ori  | 0      | 0    | 0      | 0       | 0        | 0010 | 0        | 1      | 1
+lw   | 0      | 0    | 0      | 1       | 0        | 0010 | 0        | 1      | 0
+beq  | X      | 0    | 1      | 0       | 0        | 0110 | 0        | 0      | 0
+j    | X      | 1    | X      | 0       | X        | X    | 0        | X      | 0
+
+3. BLT $rs, $rt, offset
+    We can reuse the Instruction Memory, Registers, ALU, Branch Hardware, and Control.
+    We can make sure the ALUOp sent is set to subtract, ALUSrc set to 0. Take a signal
+    from the ALU result, grabbing only the most significant bit. Add a Control Signal
+    for Branch Less Than. AND together the Branch Less Than control with the most 
+    significant bit from ALU result. OR together the current input to the Branch Mux
+    with the output from our new AND.
+
+4. SLL $rd, $rt, shamt
+    We can reuse the Instruction Memory, Registers, and Control
+    We add a new Shifting Block (multiplier) that takes input from Read data 1, and
+    bits [10-6] from the Instruction output. Assume the Shifting block knows how to
+    multiply $rt by shamt times. Create a MUX that takes input from the MemToReg mux
+    output to 0, and the Shifting output to 1. The control is from a new Control
+    Signal for Shift Left Logical (1 if shifting, 0 if not), and send the output of
+    the Mux to the Write Data.
+
+5.  stuck at 0
+    sw  $0, 0($sp)      # mem (should be word aligned)
+    li  $t0, 1          # load a 1
+    sb  $t0, 1($sp)     # mem+1 (will just store in mem+0 if stuck at 0)
+    lb  $t1, 0($sp)     # mem (should be 0; will be 1 if stuck)
+    beq $t0, $t1, fail  # check if mem is not 0
+
+    stuck at 1
+    sw  $0, 0($sp)      # mem (should be word aligned; if stuck it will be +1
+    li  $t0, 1          # load a 1
+    sb  $t0, 2($sp)     # mem + 2 (if word aligned, will right to +2 correctly otherwise will be +3)
+    lb  $t1, 3($sp)     # mem + 3 (will be +3 anyway)
+    beq $t0, $t1, fail  # checks mem+3, if it's stuck-at-0 we have a fault
+
+    This would still be usable, as we can just store and load by words, shifting things to the
+    left or right when necessary to get specific bytes. A stuck-at-1 would be more difficult as
+    things would not be word aligned correctly.
+
+6.  stuck at 0
+    addi    $t0, $0, 1      # will add 0+0 if mux has 0 at the 0th bit
+    beq     $t0, $0, fail   # $t0 should be 1 if added correctly
+
+    stuck at 1
+    addi    $t0, $0, 0      # should add to 0, will be a 1 if stuck
+    bne     $t0, $0, fail   # will fail
+
+    This would not be usable because the second number to be manipulated (either from
+    immediate or from register) would either always read as an odd number or always
+    as an even number, which would cause a lot of issues.

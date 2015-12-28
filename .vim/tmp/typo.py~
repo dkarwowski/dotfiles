@@ -1,0 +1,19 @@
+from itertools import permutations
+from string import punctuation
+from random import randrange
+
+def typo_word(word):
+    if len(word) < 4:
+        return word
+
+    for i in punctuation:
+        if i in word:
+            return i.join([typo_word(w) for w in word.split(i)])
+
+    perms = list(set([''.join(i) for i in permutations(word[1:-1])]))
+    perms.remove(word[1:-1])
+    return ''.join([word[:1], perms[randrange(len(perms))], word[-1:]])
+
+if __name__=="__main__":
+    user_input = raw_input("sentence to encode: ")
+    print ' '.join([typo_word(i) for i in user_input.split(' ')])

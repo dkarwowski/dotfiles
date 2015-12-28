@@ -1,0 +1,14 @@
+def incodd(n):
+    res = sum([2*i+1 for i in range(0, n)])
+    return res
+
+def recodd(n):
+    return recodd(n-1)+(2*n)-1 if (n > 1) else 1
+
+def add_odds(n):
+    return n * n
+
+print(incodd(3))
+print(recodd(3))
+print(add_odds(n))
+        

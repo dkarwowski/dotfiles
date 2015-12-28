@@ -1,0 +1,379 @@
+/*** Reset ***/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ul {
+	list-style: disc;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*** Basics ***/
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	line-height: 1.7;
+}
+
+a, a:active, a:visited {
+	text-decoration: none;
+	border-bottom: 1px solid #839496;
+	padding-bottom: 2px;
+}
+a:hover {
+	background-color: #839496;
+	color: #000000;
+}
+
+p, pre { margin-bottom: 15px; }
+ul, ol { padding: 0 0 18px 30px; }
+ol li, ul li { margin-top: 10px; margin-bottom: 10px; }
+em, i { font-style: italic; }
+strong, b { font-weight: bold; }
+small { font-size: 0.85em; }
+sup { vertical-align: super; font-size: 0.85em; }
+sub { vertical-align: sub; font-size: 0.85em; }
+
+code {
+    font: 1em 'Inconsolata', Courier, Monospace;
+    color: #586e75;
+    margin-right: 1px;
+}
+
+.highlight {
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+.highlight pre {
+    margin: 0;
+    padding: 0;
+}
+
+pre code {
+    font: 0.9em 'Inconsolata', Courier, Monospace;
+    margin: 0;
+}
+
+code.has-jax {
+}
+
+blockquote {
+    margin: 22px 22px;
+    padding: 0 20px;
+    border-left: 2px solid #000000;
+    font-size: 1.2em;
+    font-style: italic;
+    line-height: 1.5em;
+}
+
+acronym, abbr {
+	cursor: help;
+	letter-spacing: 1px;
+	border-bottom: 1px dashed;
+}
+
+
+h1 {
+	font-size: 25px;
+	margin: 0 0 10px 0;
+}
+h2 {
+	font-size: 23px;
+	margin: 0 0 10px 0;
+}
+h3 {
+	font-size: 20px;
+	margin: 0 0 10px 0;
+}
+
+table {
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+th {
+    background: #073642;
+    border: 5px solid #002b36;
+    width: 1%;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+dl {
+    margin: 0 0 15px 0;
+}
+
+dt {
+    color: #859900;
+}
+
+dd {
+    margin-left: 15px;
+}
+
+/*** Resume ***/
+.content table {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.resume div hr {
+    border: 0;
+    height: 1px;
+    background: #cb4b16;
+    margin-top: -5px;
+}
+
+.resume div {
+    margin-bottom: 15px;
+}
+
+.title td {
+    text-align: left;
+}
+
+.dates td {
+    text-align: left;
+    color: #586e75;
+    font-style: italic;
+}
+
+.content h2 {
+    display:inline-block;
+    color: #268bd2;
+    text-align: left;
+    margin: 0;
+}
+
+.content h3 {
+    color: #586e75;
+    text-align: right;
+    margin: 0;
+}
+
+.contact table {
+    width: 100%;
+}
+
+.contact td {
+    text-align: left;
+}
+
+
+/*** Useful Classes ***/
+.clear { clear: both; }
+.float-left { float: left; }
+.float-right { float: right; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.text-justify { text-align: justify; }
+.img-left { float: left; margin: 4px 10px 4px 0; }
+.img-right { float: right; margin: 4px 0 4px 10px; }
+.img-middle { vertical-align: middle; }
+.nopadding { padding: 0; }
+.nounderline { text-decoration: underline; }
+
+
+
+/*** Structure ***/
+#page {
+	width: 700px;
+	margin: 0 auto;
+	position: relative;
+    text-align: justify;
+}
+
+#header {
+	width: 700px;
+	margin: 40px auto 50px auto;
+}
+#header h1 {
+	font-size: 40px;
+	margin-bottom: 4px;
+}
+#header h1 a {
+	border: none;
+}
+
+#footer {
+	width: 700px;
+	margin: 50px auto 20px auto;
+	padding-top: 10px;
+	font-size: 0.85em;
+	border-top: 1px solid #073642;
+}
+
+#content {
+	width: 700px;
+	margin: 0 auto;
+}
+
+#sidebar {
+	position: absolute;
+	text-align: right;
+	width: 160px;
+	top: 0;
+	left: -240px;
+}
+
+#sidebar li {
+	list-style: none;
+	margin: 2px 0;
+}
+
+#sidebar a {
+	border: none;
+	font-family: "Open Sans", sans-serif;
+	font-size: 1.2em;
+	padding: 2px 4px;
+}
+
+/*** Posts ***/
+article {
+	margin-bottom: 40px;
+}
+
+article h1 {
+	font-size: 19px;
+	margin: 0 0 10px 0;
+}
+article h1 a {
+	border: 2px;
+}
+article h1 a.anchor {
+	margin-left: 8px;
+}
+
+article img {
+	display: block;
+	text-align: center;
+	margin: 0 auto 1em auto;
+}
+
+article .meta {
+	padding-top: 6px;
+	font-size: 0.85em;
+	font-style: italic;
+}
+
+article table, th, td {
+    border: 1;
+}
+
+img.left {
+	float: left;
+	margin: 0 1em 1em 0;
+}
+img.right {
+	float: right;
+	margin: 0 0 1em 1em;
+}
+img.center {
+	display: block;
+	text-align: center;
+	margin: 0 auto 1em auto;
+}
+
+
+
+/*** Pagination ***/
+.postnavigation {
+	padding-top: 10px;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+.postnavigation .left {
+	float: left;
+}
+
+.postnavigation .right {
+	float: right;
+}
+
+
+
+/*** Media Queries ***/
+@media all and (max-width: 870px) {
+
+	#page, #header, #content, #footer {
+		width: inherit;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	#sidebar {
+		position: relative;
+		text-align: left;
+		width: 100%;
+		left: 0;
+		margin: 10px 10px 20px 10px;
+	}
+
+	#sidebar nav select.mnav {
+		display: block;
+		margin-bottom: 15px;
+	}
+
+}
+
+
+
+/*** Icons ***/
+@font-face {
+  font-family: 'solarthemeicons';
+  src: url('../fonts/solarthemeicons.eot');
+  src: url('../fonts/solarthemeicons.eot#iefix') format('embedded-opentype'),
+       url('../fonts/solarthemeicons.woff') format('woff'),
+       url('../fonts/solarthemeicons.ttf') format('truetype'),
+       url('../fonts/solarthemeicons.svg#solarthemeicons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "solarthemeicons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1.7;
+}
+ 
+.icon-sun:before { content: '\e801'; }
+.icon-anchor:before { content: '\e800'; }
+.icon-anchor {
+	font-size: 65%;
+}

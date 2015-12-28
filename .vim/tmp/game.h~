@@ -1,0 +1,45 @@
+#ifndef _GAME_H_
+#define _GAME_H_
+
+typedef struct {
+    bool endedDown;          // is the button down now
+    uint8_t transitionCount; // they can't press more than 255 times...
+} game_control;
+
+typedef struct {
+    bool isConnected; // TODO: implement controller
+    
+    union {
+        game_control control[5];
+        struct {
+            game_control moveUp;
+            game_control moveDown;
+            game_control moveLeft;
+            game_control moveRight;
+            game_control action;
+        };
+    };
+} game_input;
+
+typedef struct {
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+    uint8_t a;
+} color;
+
+typedef struct {
+    SDL_Rect rect;  // player square
+    int xVel;       // speed to change x
+    int yVel;       // speed to change y
+    color col;      // color of the player!
+} game_player;
+
+// move the player, nice and simple without having to remember how
+#define MOVE(player, seconds)                                               \
+    do {                                                                    \
+        player.rect.x += (int)((double)player.xVel * seconds);              \
+        player.rect.y += (int)((double)player.yVel * seconds);              \
+    } while (0)
+
+#endif

@@ -1,0 +1,21 @@
+def coverage(l, w, h):
+    s1 = l*w
+    s2 = l*h
+    s3 = w*h
+
+    return 2*(s1+s2+s3)+min(s1, s2, s3)
+
+def ribbon(l, w, h):
+    amount = l + w + h - max(l, w, h)
+    amount *= 2
+    amount += l*w*h
+    return amount
+
+if __name__=="__main__":
+    presents = []
+    with open("day2.txt") as in_file:
+        (wrap, ribb) = (0, 0)
+        for i in in_file:
+            wrap += coverage(*tuple([int(x) for x in i.strip('\n').split('x')]))
+            ribb += ribbon(*tuple([int(x) for x in i.strip('\n').split('x')]))
+        print wrap, ribb 

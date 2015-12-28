@@ -1,0 +1,38 @@
+# Large Sample Test
+
+$x_1, ..., x_n$ be a random sample from a non-normal population with unknown
+mean $\mu$ and variance $\sigma$
+
+Our stat is
+
+$$Z= \frac{\bar{X}-\mu_0}{s/\sqrt{n}}$$
+
+Null distribution is the dist of above when Null hypo. is true
+
+We already have it normalized so approximately $N(0, 1)$
+
+When $n>40$ we can use large sample test
+
+# Large Sample Approximate z Test
+
+Let $\bar{x}$ be the observed mean value of a sample of size $n$ from a pop
+with unknown $\mu$ and variance
+
+$$Z = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}$$
+
+To test $H_0 : \mu = \mu_0$ at significant level approximate $2$, the rejection
+criteria is
+
+$$
+\bar{x}=28.76, s^2 = 12.26^2
+$$
+$$
+Z=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}=-0.73
+$$
+$$
+Z_{\alpha} = Z_0.05 = 1.65
+$$
+
+# Final
+
+

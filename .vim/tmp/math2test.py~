@@ -1,0 +1,16 @@
+import math2
+
+def gcd_test():
+    test_vals = [(2, 3, 1), (3, 9, 3), (1071, 462, 21)]
+    results = [math2.gcd(i[0], i[1]) == i[2] for i in test_vals]
+    return all(results)
+
+def lcm_test():
+    test_vals = [(2, 3, 6), (3, 9, 9), (24, 36, 72)]
+    results = [math2.lcm(i[0], i[1]) == i[2] for i in test_vals]
+    print results, test_vals, [math2.lcm(i[0], i[1]) for i in test_vals]
+    return all(results)
+
+if __name__=="__main__":
+    print "gcd:", gcd_test()
+    print "lcm:", lcm_test()
