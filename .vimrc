@@ -9,7 +9,7 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 " NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/neobundle.vim'
 
 " VimProc
 " NeoBundle 'Shougo/vimproc.vim', {
@@ -37,7 +37,6 @@ NeoBundle 'xolox/vim-misc'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'godlygeek/tabular'
 " NeoBundle 'bbchung/clighter'
@@ -69,6 +68,9 @@ set gdefault             " replace everything by default
 set visualbell           " stop the beep
 set colorcolumn=120       " for cleaner code
 set nowrap               " no softwrapping
+
+" cursor position for saving
+set viminfo='10,\"100,:20,%,n~/.viminfo
 
 " Backup swap files
 set backup
@@ -225,7 +227,7 @@ let g:indentLine_color_term = 10
 let g:indentLine_char = '│'
 
 " Notes
-let g:notes_directories = ['/Volumes/General/notes']
+let g:notes_directories = ['/home/dave/notes']
 
 " Lightline
 let g:lightline={
@@ -296,6 +298,13 @@ function! LightLineFugitive()
     return ''
 endfunction
 
+function! ResCur()
+    if line("'\"") <= line("$")
+        normal! g`"
+        return 1
+    endif
+endfunction
+
 "}}}
 
 "{{{ Autocommands
@@ -312,5 +321,11 @@ au BufNewFile,BufRead *.ss setfiletype xhtml
 
 " JSON
 au BufRead,BufNewFile *.json setfiletype json
+
+" restore cursor
+augroup resCur
+    autocmd!
+    autocmd BufWinEnter * call ResCur()
+augroup END
 
 "}}}
