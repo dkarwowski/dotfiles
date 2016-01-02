@@ -31,10 +31,10 @@ new_window pixel 9
 hide_edge_borders none
 
 # Window colors
-client.focused          #2c2c2c #2c2c2c #ececec #2c2c2c
-client.focused_inactive #2c2c2c #2c2c2c #bcbcbc #2c2c2c
-client.unfocused        #2c2c2c #2c2c2c #6c6c6c #2c2c2c
-client.urgent           #2c2c2c #2c2c2c #c894a7 #2c2c2c
+client.focused          #002b36 #002b36 #657b83 #002b36
+client.focused_inactive #002b36 #002b36 #586e75 #002b36
+client.unfocused        #002b36 #002b36 #586e75 #002b36
+client.urgent           #002b36 #002b36 #dc322f #002b36
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -46,7 +46,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -nb "#2c2c2c" -nf "#e0e0e0" -sb "#2c2c2c" -sf "#93aec2" -p ">" -fn "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*"
+bindsym $mod+d exec dmenu_run -nb "#002b36" -nf "#657b83" -sb "#002b36" -sf "#268bd2" -p ">" -fn "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -96,8 +96,8 @@ bindsym $mod+2 workspace term
 bindsym $mod+3 workspace www
 bindsym $mod+4 workspace steam
 bindsym $mod+5 workspace media
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
+bindsym $mod+6 workspace dcpp
+bindsym $mod+7 workspace intellij
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace etc
@@ -108,8 +108,8 @@ bindsym $mod+Shift+2 move container to workspace term
 bindsym $mod+Shift+3 move container to workspace www
 bindsym $mod+Shift+4 move container to workspace steam
 bindsym $mod+Shift+5 move container to workspace media
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+6 move container to workspace dcpp
+bindsym $mod+Shift+7 move container to workspace intellij
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace etc
@@ -125,6 +125,7 @@ workspace term output DVI-I-2
 workspace etc output DVI-I-3
 workspace steam output DVI-I-3
 workspace media output DVI-I-3
+workspace dcpp output DVI-I-2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -172,14 +173,14 @@ bar {
     position top
     status_command ~/.i3/conky
     colors {
-        background #2c2c2c
-        statusline #e0e0e0
-        separator  #e0e0e0
+        background #002b36
+        statusline #657b83
+        separator  #657b83
 
-        focused_workspace   #2c2c2c #2c2c2c #906d41
-        active_workspace    #2c2c2c #2c2c2c #b0b0b0
-        inactive_workspace  #2c2c2c #2c2c2c #808080
-        urgent_workspace    #2c2c2c #2c2c2c #c894a7
+        focused_workspace   #002b36 #002b36 #268bd2
+        active_workspace    #002b36 #002b36 #657b83
+        inactive_workspace  #002b36 #002b36 #586e75
+        urgent_workspace    #002b36 #002b36 #dc322f
     }
     tray_output DVI-I-3
     font pango:Terminus 9
@@ -187,12 +188,18 @@ bar {
 
 # Specifics for various applications
 for_window [class="Firefox"] border none
+for_window [class="Google-chrome"] border pixel 1
 for_window [class="Steam"] floating enabled
 for_window [class="Steam"] border none
 for_window [class="Popcorn-time"] floating enabled
+for_window [class="Transmission"] floating enabled
+for_window [class="fluss"] floating enabled
 
 assign [class="Steam"] steam
 assign [class="Firefox"] www
 assign [class="URxvt" instance="finch"] term
 assign [class="Skype"] etc
 assign [class="Popcorn-time"] media
+assign [class="Transmission"] media
+assign [class="jetbrains-idea"] intellij
+assign [class="linuxdcpp"] dcpp
