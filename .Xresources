@@ -1,63 +1,46 @@
-*Rxvt*font: 		xft:Terminess Powerline:pixelsize=10
-*Rxvt*scrollBar:	false
-*Rxvt*imLocale:		en_US.UTF-8
-*Rxvt*loginShell:	true
-*Rxvt*saveLines:	512
-*Rxvt*boldMode:		true
-*Rxvt*inheritPixmap:	false
-*Rxvt*xftAntialias:	true
-*Rxvt*jumpScroll:	false
-*Rxvt*internalBorder:	2
-*Rxvt*borderless:	true
-*Rxvt.url-launcher:	/usr/bin/firefox
+! Hybrid Terminal Colours. Uses the palette from Tomorrow-Night:
+! https://github.com/chriskempson/tomorrow-theme/blob/master/vim/colors/Tomorrow-Night.vim
+! vim: ft=xdefaults
 
-!*background: #4e4e4e
-!*foreground: #f6f3e8
-!black
-!*color0:  #4e4e4e
-!*color8:  #7c7c7c
-!red
-!*color1:  #ff6c60
-!*color9:  #ffb6b0
-!green
-!*color2:  #a8ff60
-!*color10: $ceffab
-!yellow
-!*color3:  #ffffb6
-!*color11: #ffffcb
-!blue
-!*color4:  #96cbfe
-!*color12: #b5dcfe
-!magenta
-!*color5:  #ff73fd
-!*color13: #ff9cfe
-!cyan
-!*color6:  #c6c5fe
-!*color14: #dfdffe
-!white
-!*color7:  #eeeeee
-!*color15: #ffffff
+! NOTE: <C-M>c is copy
+! NOTE: <C-M>v is paste
 
-URxvt*.depth: 32
-URxvt*.background: [80]#181818
-!*background:           #181818
-*foreground:           #e0e0e0
-*color0:    #040404
-*color8:    #181818
-*color1:    #904866
-*color9:    #c894a7
-*color2:    #6c9141
-*color10:   #adc98c
-*color3:    #906d41
-*color11:   #c8ae8c
-*color4:    #486d8a
-*color12:   #93aec2
-*color5:    #6c488a
-*color13:   #ad94c2
-*color6:    #489166
-*color14:   #93c9a7
-*color7:    #e0e0e0
-*color15:   #ffffff
+! font & spacing
+URxvt.font: xft:Source Code Pro:size=10
+URxvt.letterSpace: -1
+! Scrollbar looks. fucking. terrible.
+URxvt.scrollBar: false
+URxvt*scrollTtyKeypress: true
+! No border shit
+URxvt*borderless: true
 
-!*Rxvt.transparent: true
-!*Rxvt.shading:     40
+! Paging up/down will go with output and not up a screen
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+*background: #1D1F21
+*foreground: #C5C8C6
+! black
+*color0: #282A2E
+*color8: #373B41
+! red
+*color1: #A54242
+*color9: #CC6666
+! green
+*color2: #8C9440
+*color10: #B5BD68
+! yellow
+*color3: #DE935F
+*color11: #F0C674
+! blue
+*color4: #5F819D
+*color12: #81A2BE
+! magenta
+*color5: #85678F
+*color13: #B294BB
+! cyan
+*color6: #5E8D87
+*color14: #8ABEB7
+! white
+*color7: #707880
+*color15: #C5C8C6
