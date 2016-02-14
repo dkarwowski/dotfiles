@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [[ $# -ne 1 ]]; then
-    vim -c Note
-else
-    vim -c "Note $1"
-fi

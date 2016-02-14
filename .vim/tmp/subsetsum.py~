@@ -1,7 +1,0 @@
-def subs(l, i, t):
-    if (l[i] == t): return True;
-    if (i == 0): return False;
-    return subs(l, i-1, t) or sub(l, i-1, t-l[i])
-
-l = [2, 3, 5, 4]
-print subs(l, len(l) - 1, 4)

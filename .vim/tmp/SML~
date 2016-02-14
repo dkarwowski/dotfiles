@@ -1,8 +1,0 @@
-SML
-
-# Functions to Remember
-## Dividing Ints
-{{{sml
-fun DivInt(a : int, b : int) =
-  (floor(Real.fromInt(a) / Real.fromInt(b)))
-}}}

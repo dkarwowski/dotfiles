@@ -1,8 +1,0 @@
-def filter_words(words):
-    return [word for word in words if len(word) < 8]
-
-if __name__=="__main__":
-    with open("/usr/share/dict/words") as words:
-        to_filter = [word for word in words.readline() if word]
-        for word in filter_words(to_filter):
-            print word

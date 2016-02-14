@@ -1,5 +1,0 @@
-def gcd(n, m):
-    r = n % m
-    if r == 0:
-        return m
-    return gcd(m, r)
