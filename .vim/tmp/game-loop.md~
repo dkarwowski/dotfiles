@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Game Loop"
+category: sdl2
+---
+
+Okay, so maybe I'm a bit slow sometimes, but I had the wierdest issue with my
+game loop. At first, it would just constantly be tearing. Other times I'd be
+having a problem where there'd be inconsistencies with the timing. 

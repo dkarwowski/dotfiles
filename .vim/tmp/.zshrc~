@@ -55,7 +55,7 @@ plugins=(git)
 #
 source $ZSH/oh-my-zsh.sh
 
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH:/Users/dave/.rvm/gems/ruby-2.2.2/bin:/Users/dave/.rvm/gems/ruby-2.2.2@global/bin:/Users/dave/.rvm/rubies/ruby-2.2.2/bin:/usr/pkg/bin:/usr/local/bin:/usr/bin:/bin:/usr/pkg/sbin:/usr/sbin:/sbin:/usr/local/heroku/bin:/usr/local/go/bin:/Users/dave/go/bin:/Users/dave/.rvm/bin:$HOME/bin"
+export PATH="$PATH:/Users/dave/.rvm/gems/ruby-2.2.2/bin:/Users/dave/.rvm/gems/ruby-2.2.2@global/bin:/Users/dave/.rvm/rubies/ruby-2.2.2/bin:/usr/pkg/bin:/usr/local/bin:/usr/bin:/bin:/usr/pkg/sbin:/usr/sbin:/sbin:/usr/local/heroku/bin:/usr/local/go/bin:/Users/dave/go/bin:/Users/dave/.rvm/bin:$HOME/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -94,7 +94,7 @@ setopt CORRECT
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source ~/.oh-my-zsh/lib/alias.zsh
+# source ~/.oh-my-zsh/lib/alias.zsh
 
 # set homebrew to install casks correctly
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"

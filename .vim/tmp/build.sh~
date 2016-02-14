@@ -1,0 +1,26 @@
+#!/bin/bash
+
+function pause() {
+    read -p "$*"
+}
+
+echo "ASS2 - A:"
+gcc -lpthread -o ass2-a ass2-a.c
+./ass2-a
+
+pause 'Press [Enter] to continue'
+clear
+echo "ASS2 - B1:"
+gcc -lpthread -o ass2-b1 ass2-b1.c
+./ass2-b1
+
+echo
+echo "ASS2 - B2:"
+gcc -DMAX_QUEUE_SIZE=5 -lpthread -o ass2-b2 ass2-b2.c
+./ass2-b2
+
+gcc -DMAX_QUEUE_SIZE=20 -lpthread -o ass2-b2 ass2-b2.c
+./ass2-b2
+
+gcc -DMAX_QUEUE_SIZE=40 -lpthread -o ass2-b2 ass2-b2.c
+./ass2-b2

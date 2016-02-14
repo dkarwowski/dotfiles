@@ -1,0 +1,43 @@
+#include <stdlib.h>
+#include <assert.h>
+#include <stdbool.h>
+
+#ifndef MAX_QUEUE_SIZE
+#define MAX_QUEUE_SIZE 10
+#endif
+
+struct queue {
+    int data[MAX_QUEUE_SIZE];
+    int front, count;
+};
+
+#define NewQueue (struct queue){0};
+
+bool
+IsQueueFull(struct queue *l_p)
+{
+    return (l_p->count == MAX_QUEUE_SIZE);
+}
+
+bool
+IsQueueEmpty(struct queue *l_p)
+{
+    return (l_p->count == 0);
+}
+
+void
+PopQueue(int *out_p, struct queue *l_p)
+{
+    assert(!IsQueueEmpty(l_p));
+    *out_p = l_p->data[l_p->front];
+    l_p->front = (l_p->front + 1) % MAX_QUEUE_SIZE;
+    l_p->count--;
+}
+
+void
+PushQueue(struct queue *l_p, int in_data)
+{
+    assert(!IsQueueFull(l_p));
+    int index = (l_p->front + (l_p->count++)) % MAX_QUEUE_SIZE;
+    l_p->data[index] = in_data;
+}

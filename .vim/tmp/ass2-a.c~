@@ -1,0 +1,66 @@
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <dirent.h>
+#include <string.h>
+
+/**
+ * Go up one directory
+ */
+void
+UpDirectory(char *cwd)
+{
+    int lastSlash = 0;
+    for (int i = 0; cwd[i] != '\0'; i++)
+        lastSlash = (cwd[i] == '/') ? i : lastSlash;
+    cwd[lastSlash] = '\0';
+}
+
+/**
+ * Go down into the *next* directory
+ */
+void
+DownDirectory(char *cwd, char *next)
+{
+    size_t length;
+    for (length = 0; cwd[length] != '\0'; length++);
+    size_t lengthSrc;
+    for (lengthSrc = 0; next[lengthSrc] != '\0'; lengthSrc++);
+    memcpy((void *)(cwd + length), next, lengthSrc + 1);
+}
+
+int
+main(int argc, char *argv[])
+{
+    printf("Changing directory up a level...\n");
+    char cwd[2048];
+    if(getcwd(cwd, sizeof(cwd)) != NULL) {
+        UpDirectory(cwd);
+        chdir(cwd);
+    }
+    else {
+        printf("Can't change directory\n");
+        return (1);
+    }
+
+    printf("Creating a directory named 'ass2-a-test'...\n");
+    DownDirectory(cwd, "/ass2-a-test");
+    if (mkdir(cwd, 0777))
+        return (2);
+
+    printf("Listing of current directories...\n");
+    UpDirectory(cwd);
+    DIR *dir_p = opendir(cwd);
+    if (dir_p == NULL)
+        return (3);
+    struct dirent *ent_p;
+    while ((ent_p = readdir(dir_p)) != NULL)
+        printf("%s\n", ent_p->d_name);
+    closedir(dir_p);
+
+    // Clean up everything I just made
+    DownDirectory(cwd, "/ass2-a-test");
+    rmdir(cwd);
+    return (0);
+}

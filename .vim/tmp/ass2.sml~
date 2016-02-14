@@ -1,0 +1,8 @@
+type Env = (string * int) list;
+exception NameNotBound of string;
+
+val env_new = []:Env;
+val env_bind (e : Env) s i = (s,i)::e : Env;
+val env_lookup ([]:Env) t = raise NameNotBound t
+  | env_lookup ((s,i)::e : Env) t = if s=t then i else (env_lookup e t);
+

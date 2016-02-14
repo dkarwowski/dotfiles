@@ -9,37 +9,40 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 " NeoBundle
-NeoBundle 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " VimProc
-" NeoBundle 'Shougo/vimproc.vim', {
-"   \ 'build' : {
-"   \   'mac' : 'make -f make_mac.mak',
-"   \   'unix': 'make -f make_unix.mak'
-"   \   }
-"   \ }
+NeoBundle 'Shougo/vimproc.vim', {
+  \ 'build' : {
+  \   'mac' : 'make -f make_mac.mak',
+  \   'unix': 'make -f make_unix.mak'
+  \   }
+  \ }
 
 " Themes
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'w0ng/vim-hybrid'
 
 " Extensions
-NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'easymotion/vim-easymotion'
-NeoBundle 'tpope/vim-sensible'
+"NeoBundle 'tpope/vim-sensible'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'xolox/vim-notes'
-NeoBundle 'xolox/vim-misc'
+"NeoBundle 'xolox/vim-misc'
+"NeoBundle 'valloric/YouCompleteMe'
+"NeoBundle 'rdnetto/YCM-Generator'
+NeoBundle 'vim-scripts/taglist.vim'
+"NeoBundle 'dkarwowski/a.vim'
 
 " Editing
-NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-abolish'
+"NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'godlygeek/tabular'
-" NeoBundle 'bbchung/clighter'
+"NeoBundle 'godlygeek/tabular'
+NeoBundle 'vimwiki/vimwiki'
 
 " Languages
 NeoBundle 'mips.vim'
@@ -58,7 +61,7 @@ NeoBundleCheck
 
 " General
 set completeopt-=preview " don't show preview window
-" set fcs=vert:│,fold:-    " solid instead of broken line for vert splits
+set fcs=vert:│,fold:-    " solid instead of broken line for vert splits
 set hidden               " hide when switching buffers, don't unload
 set lazyredraw           " don't update screen when executing macros
 set mouse=a              " enable mouse in all modes
@@ -104,12 +107,12 @@ set smartcase            " override ignorecase if upper case typed
 " Colours
 " colorscheme termorrow
 syntax enable
-colorscheme solarized
 set background=dark
+colorscheme hybrid
 
 " Font
 if has('gui_running')
-    set guifont=Meslo_LG_M_for_Powerline:h11
+    set guifont=Source_Code_Pro:h12
 endif
 
 " Status line
@@ -142,27 +145,36 @@ set statusline+=%p%%    " Percentage through the file
 " Map Leader
 let mapleader = " "
 
+" Tags search goes up
+set tags+=tags;$HOME
+
 " Map : to ; and the other way around
-nnoremap ; :
-nnoremap : ;
+"nnoremap ; :
+"nnoremap : ;
 
 " Allow for easier escaping
 inoremap jj <Esc>
 
 " Remap Tab to %
-map <BS> %
+"map <BS> %
 
 " Toggle fold
-nnoremap <leader><space> za
+"nnoremap <leader><space> za
 
 " Toggle hlsearch for current results
-nnoremap <leader>h :nohlsearch<CR>
+"nnoremap <leader>h :nohlsearch<CR>
+
+" Alternate mappings
+"nnoremap <leader>as :A<CR>
+"nnoremap <leader>ih :IH<CR>
+"nnoremap <leader>is :IH<CR>:A<CR>
 
 " Search for trailing whitespace
-nnoremap <leader>w /\s\+$<CR>
+"nnoremap <leader>w /\s\+$<CR>
+nnoremap <leader>t :%s/\s\+$//<CR>
 
 " Toggle last active bufer
-nnoremap <leader><Tab> :b#<CR>
+"nnoremap <leader><Tab> :b#<CR>
 
 " Delete a buffer without closing the window
 nnoremap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
@@ -182,25 +194,28 @@ vnoremap <leader>d d:call ClipboardYank()<cr>
 nnoremap <leader>p :call ClipboardPaste()<cr>p
 
 " Quick save
-nnoremap <leader>s :w<CR>
+"nnoremap <leader>s :w<CR>
+
+" Remake ctags
+"nnoremap <leader>T :!update-ctags.sh<CR>
 
 " Shortcut for Tabularize
-vnoremap <leader>t :Tabularize /
+"vnoremap <leader>t :Tabularize /
 
 " Check file for errors
-nnoremap <leader>c :SyntasticCheck<CR>
+"nnoremap <leader>c :SyntasticCheck<CR>
 
 " Show Quickfix window for Syntastic errors
-nnoremap <leader>e :Errors<CR>
+"nnoremap <leader>e :Errors<CR>
 
 " Unite.vim
-nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async<CR>
-nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<CR>
-nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  -start-insert buffer<CR>
-nnoremap <leader>/ :<C-u>Unite -no-split -buffer-name=buffer  -start-insert grep:.<CR>
+"nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async<CR>
+"nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<CR>
+"nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  -start-insert buffer<CR>
+"nnoremap <leader>/ :<C-u>Unite -no-split -buffer-name=buffer  -start-insert grep:.<CR>
 
 " Vimfiler
-nnoremap <leader><space> :VimFilerExplorer<CR>
+"nnoremap <leader><space> :VimFilerExplorer<CR>
 
 " Keep search pattern at the center of the screen
 nnoremap <silent> n nzz
@@ -208,26 +223,24 @@ nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 
+"SILENCE!
+set t_vb=
+
 "}}}
 
 "{{{ Plugin Settings
 " -----------------------------------------------------------------------------
 
-" Airline
-"let g:airline_powerline_fonts=1
-"set laststatus=2
-"set ttimeoutlen=50
-
-" clighter
-" let g:clighter_libclang_file = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
-" let g:clighter_highlight_blacklist = ['clighterNamespaceRef', 'clighterFunctionDecl', 'clighterFieldDecl', 'clighterDeclRefExprCall', 'clighterMemberRefExprCall', 'clighterMemberRefExprVar', 'clighterNamespace', 'clighterNamespaceRef', 'cligherInclusionDirective', 'clighterVarDecl']
-
 " indentLine
-let g:indentLine_color_term = 10 
-let g:indentLine_char = '│'
+let g:indentLine_color_term = 10
+let g:indentLine_char = '▏' "'│'
 
-" Notes
-let g:notes_directories = ['/home/dave/notes']
+" Vimwiki
+let wiki = {}
+let wiki.path = '/Volumes/General/wikis/general'
+let wiki.nested_syntaxes = {'python': 'python', 'c': 'c', 'sml': 'sml'}
+let wiki.auto_toc = 1
+let g:vimwiki_list = [wiki]
 
 " Lightline
 let g:lightline={
@@ -239,40 +252,38 @@ let g:lightline={
     \   'readonly': 'LightLineReadOnly',
     \   'fugitive': 'LightLineFugitive'
     \ },
-    \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
-    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+    \ 'separator': { 'left': "", 'right': "" },
+    \ 'subseparator': { 'left': "│", 'right': "│" }
     \ }
+"    \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+"    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
 set laststatus=2
-
-" " Syntastic
-"let g:syntastic_error_symbol = '✗'
-"let g:syntastic_warning_symbol = '!'
 
 " VimFiler
 let g:vimfiler_as_default_explorer = 1
 
 " Unite
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_grep_max_candidates = 200
+"let g:unite_source_history_yank_enable = 1
+"let g:unite_source_grep_max_candidates = 200
 
 " Let's use ag
-let g:unite_source_rec_async_command =
-\ 'ag --follow --nocolor --nogroup --hidden -g ""'
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts =
-\ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
-\  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-let g:unite_source_grep_recursive_opt = ''
+"let g:unite_source_rec_async_command =
+"\ 'ag --follow --nocolor --nogroup --hidden -g ""'
+"let g:unite_source_grep_command = 'ag'
+"let g:unite_source_grep_default_opts =
+"\ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
+"\  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+"let g:unite_source_grep_recursive_opt = ''
 
 " Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
+"autocmd FileType unite call s:unite_settings()
+"function! s:unite_settings()
   " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+"  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+"  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
   " Reload directory contents
-  imap <buffer> <C-r>   <Plug>(unite_redraw)
-endfunction
+"  imap <buffer> <C-r>   <Plug>(unite_redraw)
+"endfunction
 
 "}}}
 
@@ -321,6 +332,16 @@ au BufNewFile,BufRead *.ss setfiletype xhtml
 
 " JSON
 au BufRead,BufNewFile *.json setfiletype json
+
+" H files are C
+au BufRead,BufNewFile *.h set ft=c
+
+" notes stuff added
+au FileType vimwiki let g:indentLine_enabled = 0
+au FileType vimwiki setlocal ts=2 sw=2 sts=2 tw=79
+
+" sml
+au FileType sml let g:indentLine_char = "."
 
 " restore cursor
 augroup resCur

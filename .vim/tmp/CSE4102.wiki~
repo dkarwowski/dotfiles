@@ -1,0 +1,350 @@
+= Contents =
+  - [[#SML|SML]]
+    - [[#SML#Scope|Scope]]
+    - [[#SML#Types|Types]]
+      - [[#SML#Types#Tuples|Tuples]]
+      - [[#SML#Types#Type Inference|Type Inference]]
+      - [[#SML#Types#Records|Records]]
+      - [[#SML#Types#Tree|Tree]]
+    - [[#SML#Functions|Functions]]
+      - [[#SML#Functions#Parameters|Parameters]]
+      - [[#SML#Functions#Multiple Arguments|Multiple Arguments]]
+    - [[#SML#Operators|Operators]]
+    - [[#SML#Expressions|Expressions]]
+      - [[#SML#Expressions#Arithmetic|Arithmetic]]
+      - [[#SML#Expressions#Boolean|Boolean]]
+      - [[#SML#Expressions#Conditional|Conditional]]
+    - [[#SML#Lexical Scoping|Lexical Scoping]]
+    - [[#SML#Pattern Matching|Pattern Matching]]
+    - [[#SML#Loops|Loops]]
+    - [[#SML#Examples|Examples]]
+      - [[#SML#Examples#Insertion Sort|Insertion Sort]]
+
+= SML =
+
+== Scope ==
+* Scope ends when program ends
+* Starts the line after declared
+  {{{sml
+val x = 3;
+  }}}
+* We can have local bindings
+  * Looks like scheme with syntax
+  {{{sml
+let
+  <expression>
+in
+  <stuffs and things>
+end;
+  }}}
+  * Local scope overrides outer scope variables
+  * Evaluates to the last expression
+  * Let statements will be very common
+
+== Types ==
+* Is computed -> types are inferred by sml
+  {{{sml
+- val x = 42;
+val x = 42 : int
+  }}}
+* Can be specified -> Constrain types
+  {{{sml
+- val x = 42 : int;
+val x = 42 : int
+  }}}
+* Type of the expression is based on sub-expressions
+* Type will be brought up later on
+* Why do we need type constraints?
+  * inference can go horribly wrong
+  * inference is sometimes beyond exponential time (causes failure when trying
+    to compute
+
+=== Tuples ===
+* Used to organize information
+  * pairs, triples, tuples (which are more general)
+* Don't have to be mono-typed
+* Can be accessed iteratively -> only hardcoded, no variable iteration
+* Can be unpacked, using the "..." syntax to ignore.
+  {{{sml
+- val x = (3, 4);
+val x = (3, 4) : int * int
+- #1(x)
+val it = 3
+- val (a, b) = x;
+val a = 3 : int
+val b = 3 : int
+  }}}
+
+=== Type Inference ===
+* Consider the following:
+  {{{sml
+fun pair x y = fn z => z x y;
+
+let val x1 = fn y => pair y y in
+  let val x2 = fn y => x1(x1(y)) in
+    let val x3 = fn y => x2(x2(y)) in
+      let val x4 = fn y => x3(x3(y)) in
+        (* TODO: find this in slide *)
+      end;
+    end;
+  end;
+end;
+  }}}
+
+* Type inference today?
+  * Yes, we have the `auto` keyword
+  * Good for fuzzy matching when trying to grab a type form within a struct
+    (Check out sssmcgrath for that)
+
+=== Records ===
+* A named tuple
+  {{{sml
+- val x = { name = "Donkey", age = 3 };
+val x = {age=3, name="Donkey"} : { age : int, name : string }
+- #age(x)
+val it = 3 : int
+- val {name=a, age=b} = x;
+val a = "Donkey" : string
+val b = 3 : int
+  }}}
+* Can't use numbers to access these fields
+* Will ignore a value if you set the named value to it's actual value
+  {{{sml
+- val {name="Donkey", age=c} = x;
+val x = 3 : int
+  }}}
+* can use partial matching, as with tuples
+  {{{sml
+- val {name=d, ...} = x;
+val d = "Donkey" : string
+  }}}
+
+=== Tree ===
+Expressions are represented as trees. Each node has different data, and
+susceptible to different treatment. Easy way to implement:
+* Evaluation
+* Derivation
+* Integration
+Let's start with a binary tree such that:
+* Node stores data
+* Node stores references of two sub trees
+* We need to:
+  * Add an element
+  * Remove an element
+  * Print the tree
+Upon implementing, we get:
+{{{sml
+datatype 'a Tree = Leaf
+                 | Node of 'a * 'a Tree * 'a Tree;
+Node(3, Leaf, Leaf); (* : int Tree *)
+
+fun emptyTree () = Leaf;
+fun addTree e Leaf          = Node(e, Leaf, Leaf)
+  | addTree e (Node(v,l,r)) = if (e < v)
+                              then Node(v, addTree e l, r)
+                              else if (e > v)
+                                   then Node(v, l, addTree e r)
+                                   else (print "oops!\n"; Node(v, l, r));
+}}}
+
+== Functions ==
+* What is a function?
+  * Takes [[#Multiple Arguments|one input]], and gives one output
+* Why use it?
+  * Good as black-boxes for the information
+  * Can be reused over and over again
+  * Just a value (first-class data type)
+  {{{c
+int hello(int x) {
+  static int x = 0;
+  int y = y * c;
+  c = c + 1;
+  return y;
+}
+  }}}
+* This is not really a function, shouldn't rely on anything other than input
+* Basic syntax follows the construction:
+  * `fun <id> <param> = <expression>;`
+  {{{sml
+- fun succ x = x + 1;
+val succ = fn : int -> int
+  }}}
+* Applications
+  {{{sml
+- succ 3;
+val it = 4 : int
+  }}}
+* We can also have anonymous functions
+  {{{sml
+- fn x => x + 1;
+val it = fn : int -> int
+  }}}
+
+=== Parameters ===
+* Pass by value
+  * Arguments that aren't pointers in C
+* Pass by reference
+  * Pointers in C
+* Pass by name
+  * TODO: look this up?
+
+=== Multiple Arguments ===
+* *Multiple arguments* are in the form of a tuple
+  {{{sml
+- fun add (x, y) = x + y;
+val add = fn : int * int -> int
+- add (3, 5);
+val it = 8 : int
+  }}}
+* Can we do this without a tuple?
+  * Yes, we can return a function that takes a second input
+  * We call this *Curry*
+    {{{
+int -> ADD         vs.  int -> ADD -> AddOne -> int
+int ->     -> int       int ----------^
+    }}}
+    {{{sml
+fun add x = fn y => x + y;
+add 5 3;
+    }}}
+  * We can write Curried style by using
+{{{sml
+fun add x y = x - y;
+    }}}
+  * Is one better than the other?
+    * Yes and no, Currying is more accepted in ML
+  * Can one be turned into the other?
+    * Yes, there can be a function that can convert from one to the other with
+      ease.
+      {{{sml
+fun curry f = fn x => fn y => f(x, y);
+(* This is the same as:
+fun curry f x y = f(x, y); *)
+      }}}
+    * NOTE:
+      * The function captures `f`
+      * The function returned captures `x`
+      * This can be generalized to any number of args
+      * Place holders are used for argument types
+      {{{sml
+fun uncurry f = fn (x, y) => f x y;
+(* This is the same as
+fun uncurry f (x, y) = f x y; *)
+      }}}
+  * We've seen:
+    * ML only offers one input
+    * More arguments are actually tuples
+    * We can go back and forth between the major notations
+  * Questions
+    * Can we write functions w/ 0 arguments in ML?
+      * Yes, we have `nil`
+    * Does it make sense?
+      * Sure, why not. Whenever you need to grab something
+
+== Operators ==
+
+Operators are basically functions
+* Functions can be defined with infix notation.
+  {{{sml
+- op +;
+val it = fn int * int -> int
+- val add = op +;
+- add(3,5);
+val it = 8 : int
+  }}}
+
+You can turn functions into left associative, right associative, and with a
+specific precedence.
+
+TODO: look at slides and add what's necessary.
+
+== Expressions ==
+* What do we need?
+  * Arithmetic
+  * Boolean operations
+  * Conditionals
+
+=== Arithmetic ===
+* Binary:
+  * +, -, *, /, mod
+* Unary:
+  * ~ [negative, the _tilde_]
+* Works with literals and names with types
+* You *cannot* mix int and reals
+* Handles precedence properly (PEMDAS)
+
+=== Boolean ===
+* Conjunction (and) -> andalso
+* Disjunction (or)  -> orelse
+* Negation    (not) -> not
+* `=` is a comparision _or_ assignment, depending on context
+  * Only an assignment if there's a val preceding it (matches the first equal)
+
+=== Conditional ===
+* Make a decision and branch
+* Is an expression, with a/an:
+  * condition
+  * consequent (if true)
+  * alternate (if false)
+  {{{sml
+- val x = 4;
+val x = 4 : int
+- val z = if x = 4 then ("Hello", true) else ("Bye", false);
+val z = {"Hello" : string, true : bool}
+  }}}
+
+== Lexical Scoping ==
+* Functions with a free variable
+  {{{sml
+fun foo () = x;
+  }}}
+  * ML wants to know the value of this function when defined
+    {{{sml
+val x = 100;
+fun foo () = x;
+    }}}
+  * However, how does this affect when rebound?
+    {{{sml
+val x = 200;
+foo() => 100
+    }}}
+    `foo` would need a new binding in order to cause any real changes in the
+    function.
+  * How does this work?
+    * When defined, a function attaches references to the current environment
+    * This is called the *lexical environment*
+    * Functions use references defined at it's enviroment
+    * ML tracks a *dynamic environment* or the global environment
+
+== Pattern Matching ==
+We can use patterns to match many things, such as a head and a tail for lists.
+For example,
+{{{sml
+val l = [2, 3, 4];
+val (a::b) = l; (* -> val a = 2; val b = [3, 4] *)
+}}}
+We can use this within functions to get
+{{{sml
+fun length []     = 0
+  | length (a::b) = 1 + (length b);
+}}}
+
+== Loops ==
+There are none. We only have recursion.
+
+== Examples ==
+=== Insertion Sort ===
+1. Pick one element
+2. Sort the remainder
+3. Insert the picked into sorted remainder
+{{{sml
+fun insert e nil = [e]
+  | insert e (a::b) = if e > a
+                      then a::(insert e b)
+                      else e::a::b;
+
+fun iSort nil = nil
+  | iSort (a::b) = insert a (iSort b);
+}}}
+
+

@@ -1,0 +1,27 @@
+= Entities =
+== Collision ==
+
+Some sort of array that has pairs and what type of collision.
+
+*Collision Types*:
+* Stops entities
+* Boost entities
+* Kills entities
+* Combinations of the above
+
+== Types ==
+
+E_GetTypeInfo:
+* Grabs the info that is consistent for all entities of that type
+* Could contain info such as speed, drag, drawing, mass
+* Could have overriden values for specific types
+  * Makes for duplicates in some cases, but good for the general
+* Takes up less memory since each enemy type only stores some stuff once,
+  rather than storing it twice.
+  
+*Player*:
+
+*Bullet*:
+
+*Enemy*:
+

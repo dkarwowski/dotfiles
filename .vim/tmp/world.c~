@@ -1,0 +1,119 @@
+local bool
+IsValidCoord(i32 mapDim, r32 *mapOffset_p)
+{
+    bool result = ((0.0f <= *mapOffset_p) && (*mapOffset_p <= (mapDim - 0.000001f)));
+    return result;
+}
+
+local void
+FixWorldCoord(i32 mapDim, i32 *mapCoord_p, r32 *mapOffset_p)
+{
+    i32 offset = FloorToI32(*mapOffset_p / (r32)mapDim);
+    *mapCoord_p += offset;
+    *mapOffset_p -= offset * mapDim;
+
+    ASSERT(IsValidCoord(mapDim, mapOffset_p));
+}
+
+local void
+CenterWorldPos(world_pos *pos_p)
+{
+    pos_p->map.x = MAP_DIM/2;
+    pos_p->map.y = MAP_DIM/2;
+}
+
+local void
+FixWorldPos(world_pos *pos_p)
+{
+    // NOTE(david): assume the current world pos has a valid map-in-world value..
+    FixWorldCoord(MAP_DIM, &pos_p->worldx, &pos_p->map.x);
+    FixWorldCoord(MAP_DIM, &pos_p->worldy, &pos_p->map.y);
+}
+
+local void
+MoveWorldPos(world_pos *pos_p, v2 offset)
+{
+    pos_p->map = addV2(pos_p->map, offset);
+    FixWorldPos(pos_p);
+}
+
+local v2
+DiffWorldPos(world_pos *aPos_p, world_pos *bPos_p)
+{
+    v2 worldDiff = V2i(aPos_p->worldx - bPos_p->worldx, aPos_p->worldy - bPos_p->worldy);
+    worldDiff = hadamardV2(worldDiff, V2i(MAP_DIM, MAP_DIM));
+    v2 result = addV2(subV2(aPos_p->map, bPos_p->map), worldDiff);
+    return result;
+}
+
+local world_map *
+GetWorldMap(tile_world *world_p, i32 worldx, i32 worldy, bool create)
+{
+    // hash the world coords
+    u32 hashVal = (17*worldx + 3*worldy) & (COUNT_OF(world_p->mapHash) - 1);
+    world_map *result_p = world_p->mapHash + hashVal;
+    do {
+        if (worldx == result_p->worldx && worldy == result_p->worldy)
+            break;
+
+        if (create && result_p->worldx != MAP_UNINITIALIZED && !result_p->next) {
+            result_p->next = PushStruct(&world_p->stack, world_map, true);
+            result_p = result_p->next;
+        }
+
+        if (create && result_p->worldx == MAP_UNINITIALIZED) {
+            result_p->worldx = worldx;
+            result_p->worldy = worldy;
+            result_p->next = 0;
+            break;
+        }
+
+        result_p = result_p->next;
+    } while (result_p);
+
+    return result_p;
+}
+
+local u32
+GetTileValue(tile_world *world_p, world_pos pos)
+{
+    world_map *map_p = GetWorldMap(world_p, pos.worldx, pos.worldy, false);
+    if (!map_p) return TM_WTF;
+
+    u32 result = map_p->map.tiles[FloorToI32(pos.map.y)][FloorToI32(pos.map.x)];
+    return result;
+}
+
+local void
+InitWorld(tile_world *world_p, memory_stack *stack_p)
+{
+    // empty all tile maps
+    for (int i = 0; i < COUNT_OF(world_p->mapHash); i++) {
+        world_p->mapHash[i].worldx = MAP_UNINITIALIZED;
+    }
+
+    // create a stack to store the tile maps -> if there are collisions when hashing
+    InitSubMemStack(&world_p->stack, stack_p, StackRemaining(stack_p));
+
+    // TODO(david): make this real generation?
+#if 0
+    bool openRight = true;
+    bool openLeft = false;
+    for (int i = 0; i < 4; i++) {
+        if (i == 3)
+            openRight = false;
+
+        world_map *map_p = GetWorldMap(world_p, i, 0, true);
+        for (int y = 0; y < MAP_DIM; y++) {
+            for (int x = 0; x < MAP_DIM; x++) {
+                if (y == 0 || y == (MAP_DIM - 1))
+                    map_p->map.tiles[y][x] = TM_UNWALKABLE;
+                else if ((x == 0 && !openLeft) || (x == (MAP_DIM - 1) && !openRight))
+                    map_p->map.tiles[y][x] = TM_UNWALKABLE;
+            }
+        }
+
+        if (openRight)
+            openLeft = true;
+    }
+}

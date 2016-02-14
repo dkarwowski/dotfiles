@@ -36,3 +36,6 @@ bin/
 
 # Debug files
 *.dSYM/
+
+# YCM/Vim
+.ycm_extra_conf.py*

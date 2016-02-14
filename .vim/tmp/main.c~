@@ -1,25 +1,18 @@
-#include <SDL2/SDL.h>
-#include "common.h"
-#include "game.h"
+#include "main.h"
 
-#define GOAL_FPS 60
-
-// Global variables
-static game_player player;
-
-void
-ProcessKeyboardInput(game_control *old_p, game_control *new_p, bool isDown)
+local void
+ProcessKeyboardInput(game_control *oldControl_p, game_control *newControl_p, bool isDown)
 {
-    new_p->endedDown = isDown;
-    new_p->transitionCount += (old_p->endedDown == new_p->endedDown) ? 0 : 1;
+    newControl_p->endedDown = isDown;
+    newControl_p->halfTransitionCount += (!(oldControl_p->endedDown) != !(newControl_p->endedDown)) ? 1 : 0;
 }
 
 /**
  * Grab an do something with an event
  * Return true if we're quitting, false otherwise
  */
-bool
-HandleEvent(SDL_Event *event_p, game_input *old_p, game_input *new_p)
+local bool
+HandleEvent(SDL_Event *event_p, game_input *oldInput_p, game_input *newInput_p)
 {
     bool result = false;
     switch (event_p->type) {
@@ -30,30 +23,50 @@ HandleEvent(SDL_Event *event_p, game_input *old_p, game_input *new_p)
             bool isDown = (event_p->key.repeat != 0 || event_p->key.state == SDL_PRESSED) ? true : false;
             if (wasDown != isDown) {
                 if (event_p->key.keysym.sym == SDLK_w)
-                    ProcessKeyboardInput(&(old_p->moveUp), &(new_p->moveUp), isDown);
+                    ProcessKeyboardInput(&(oldInput_p->moveUp), &(newInput_p->moveUp), isDown);
                 if (event_p->key.keysym.sym == SDLK_a)
-                    ProcessKeyboardInput(&(old_p->moveLeft), &(new_p->moveLeft), isDown);
+                    ProcessKeyboardInput(&(oldInput_p->moveLeft), &(newInput_p->moveLeft), isDown);
                 if (event_p->key.keysym.sym == SDLK_s)
-                    ProcessKeyboardInput(&(old_p->moveDown), &(new_p->moveDown), isDown);
+                    ProcessKeyboardInput(&(oldInput_p->moveDown), &(newInput_p->moveDown), isDown);
                 if (event_p->key.keysym.sym == SDLK_d)
-                    ProcessKeyboardInput(&(old_p->moveRight), &(new_p->moveRight), isDown);
+                    ProcessKeyboardInput(&(oldInput_p->moveRight), &(newInput_p->moveRight), isDown);
                 if (event_p->key.keysym.sym == SDLK_SPACE)
-                    ProcessKeyboardInput(&(old_p->action), &(new_p->action), isDown);
+                    ProcessKeyboardInput(&(oldInput_p->action), &(newInput_p->action), isDown);
+#ifdef DEBUG
+                if (event_p->key.keysym.sym == SDLK_f)
+                    ProcessKeyboardInput(&(oldInput_p->debug), &(newInput_p->debug), isDown);
+                if (event_p->key.keysym.sym == SDLK_r)
+                    ProcessKeyboardInput(&(oldInput_p->reload), &(newInput_p->reload), isDown);
+#endif
+                if (event_p->key.keysym.sym == SDLK_ESCAPE)
+                    ProcessKeyboardInput(&(oldInput_p->terminate), &(newInput_p->terminate), isDown);
             }
 
             if (event_p->key.keysym.sym == SDLK_ESCAPE)
                 result = true;
-            break;
-        }
+        } break;
         case SDL_WINDOWEVENT:
         {
-            break;
-        }
+            if (event_p->window.event == SDL_WINDOWEVENT_FOCUS_LOST ||
+                    event_p->window.event == SDL_WINDOWEVENT_HIDDEN) {
+                newInput_p->paused = true;
+                oldInput_p->paused = true;
+            }
+            if (event_p->window.event == SDL_WINDOWEVENT_FOCUS_GAINED ||
+                    event_p->window.event == SDL_WINDOWEVENT_SHOWN) {
+                newInput_p->paused = false;
+                oldInput_p->paused = false;
+            }
+#ifdef WIN_BUILD
+            if (event_p->window.event == SDL_WINDOWEVENT_MOVED) {
+                newInput_p->paused = true;
+            }
+#endif
+        } break;
         case SDL_QUIT:
         {
             result = true;
-            break;
-        }
+        } break;
         default:
             break;
     }
@@ -61,14 +74,19 @@ HandleEvent(SDL_Event *event_p, game_input *old_p, game_input *new_p)
     return result;
 }
 
-bool
+local bool
 InitializeWindowAndRenderer(SDL_Window **window_p, SDL_Renderer **renderer_p)
 {
     bool result = true;
 
+    if (TTF_Init() != 0) {
+        printf("Error initializing TTF: %s\n", TTF_GetError());
+        result = false;
+    }
+
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("Error initializing: %s\n", SDL_GetError());
-        result = -1;
+        result = false;
     }
     else {
         // Grab the window we need
@@ -76,110 +94,175 @@ InitializeWindowAndRenderer(SDL_Window **window_p, SDL_Renderer **renderer_p)
                 "Fluss",
                 SDL_WINDOWPOS_CENTERED,
                 SDL_WINDOWPOS_CENTERED,
-                800,
-                600,
-                SDL_WINDOW_RESIZABLE
+                SCREEN_WIDTH,
+                SCREEN_HEIGHT,
+                SDL_WINDOW_ALLOW_HIGHDPI
         );
 
         // Check if the window is valid
         if (*window_p == NULL) {
             printf("Error Creating Window: %s\n", SDL_GetError());
-            result = -1;
+            result = false;
         }
         else {
             // grab the renderer!
             *renderer_p = SDL_CreateRenderer(
                     *window_p, 
                     -1, 
-                    SDL_RENDERER_ACCELERATED
+                    SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC
             );
 
             if (*renderer_p == NULL) {
                 printf("Error Creating Renderer: %s\n", SDL_GetError());
-                result = -1;
+                result = false;
             }
         }
     }
     return result;
 }
 
+local void
+UnloadGame(game_lib *lib_p)
+{
+    if (lib_p->gameLib_p) {
+#ifdef WIN_BUILD
+        FreeLibrary(lib_p->gameLib_p);
+#else
+        dlclose(lib_p->gameLib_p);
+#endif
+    }
+
+    lib_p->UpdateAndRender_fp = 0;
+    lib_p->isValid = false;
+}
+
+local void
+LoadGame(game_lib *lib_p)
+{
+#ifdef WIN_BUILD
+    WIN32_FILE_ATTRIBUTE_DATA fileAttr;
+    if (GetFileAttributesEx("../bin/game.dll", GetFileExInfoStandard, &fileAttr)) {
+        if (CompareFileTime(&lib_p->lastWriteTime, &fileAttr.ftLastWriteTime) != 0) {
+            lib_p->lastWriteTime = fileAttr.ftLastWriteTime;
+#else
+    struct stat fileStat;
+    if(stat("../bin/libgame.so", &fileStat) == 0) {
+        if (lib_p->ino != fileStat.st_ino) {
+            lib_p->ino = fileStat.st_ino;
+#endif
+            lib_p->isValid = false;
+        }
+    }
+
+    if (lib_p->isValid == false) {
+        UnloadGame(lib_p);
+
+#ifdef WIN_BUILD
+        CopyFile("../bin/game.dll", "../bin/game-run.dll", 0);
+        lib_p->gameLib_p = LoadLibraryA("../bin/game-run.dll");
+        if (lib_p->gameLib_p)
+            lib_p->UpdateAndRender_fp = (update_and_render *)GetProcAddress(lib_p->gameLib_p, "UpdateAndRender");
+        else
+            lib_p->UpdateAndRender_fp = 0;
+#else
+        lib_p->gameLib_p = dlopen("libgame.so", RTLD_LAZY);
+        if (!lib_p->gameLib_p) {
+            printf("failed to open: %s\n", dlerror());
+            lib_p->UpdateAndRender_fp = 0;
+        }
+        else {
+            dlerror();
+            lib_p->UpdateAndRender_fp = (update_and_render *)dlsym(lib_p->gameLib_p, "UpdateAndRender");
+            const char *err = dlerror();
+            if (err) {
+                printf("failed to open: %s\n", err);
+                lib_p->UpdateAndRender_fp = 0;
+            }
+        }
+#endif
+
+        lib_p->isValid = (lib_p->UpdateAndRender_fp) ? true : false;
+    }
+}
+
 int
-main(int argc, char **argv)
+main(int argc, char *argv[])
 {
     SDL_Window *window_p;
     SDL_Renderer *renderer_p;
     // Initialization
     if (InitializeWindowAndRenderer(&window_p, &renderer_p)) {
-        // TODO: remove this shit
-        // initialize the player
-        player.rect.x = 300;
-        player.rect.y = 300;
-        player.rect.w = 25;
-        player.rect.h = 25;
-        player.col.r = 101;
-        player.col.g = 155;
-        player.col.b = 153;
-        player.col.a = 255;
+        // game lib to use
+        game_lib gameLib = {0};
 
-        // TODO: remove this shit
-        // initialize inputs to 0
-        game_input old_input = {0};
-        game_input new_input = {0};
+        // game memory; ensure it's 0
+        game_memory memory = {0};
+        memory.permMemSize = Megabytes(64);
+        memory.tempMemSize = Megabytes(256);
+#ifdef WIN_BUILD
+        memory.permMem = VirtualAlloc(
+                0, memory.permMemSize + memory.tempMemSize, MEM_RESERVE|MEM_COMMIT, PAGE_READWRITE);
+#else
+        memory.permMem = mmap(
+                0, memory.permMemSize + memory.tempMemSize, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0);
+#endif
+        memory.tempMem = (char *)(memory.permMem) + memory.permMemSize;
+
+        // game input to swap between
+        game_input oldInput = {0};
+        game_input newInput = {0};
+
+        int width, height;
+        SDL_GetWindowSize(window_p, &width, &height);
+        SDL_RenderSetLogicalSize(renderer_p, width*2, height*2); // creates sub-pixel rendering?
+
+        LoadGame(&gameLib);
 
         // ensure fps
-        uint64_t startCount = SDL_GetPerformanceCounter();
-        uint64_t performanceFrequency = SDL_GetPerformanceFrequency();
+        uint64_t prevCount = SDL_GetPerformanceCounter();
+        uint64_t currCount = SDL_GetPerformanceCounter();
+        uint64_t countPerSec = SDL_GetPerformanceFrequency();
 
         // Handle Events
         bool done = false;
         while (!done) {
             // swap old and new input
-            old_input = new_input;
+            oldInput = newInput;
             // grab all event and deal with them
             SDL_Event event;
             while (SDL_PollEvent(&event)) {
-                done = HandleEvent(&event, &old_input, &new_input);
+                done = HandleEvent(&event, &oldInput, &newInput);
+            }
+            if (newInput.paused) {
+#ifdef WIN_BUILD
+                newInput.paused = false;
+#endif
+                currCount = SDL_GetPerformanceCounter();
+                SDL_Delay(1000.0/GOAL_FPS);
+                continue;
             }
 
-            // TODO: deal with controls better
-            // game movement logic
-            if (new_input.moveUp.endedDown)
-                player.yVel = -100;
-            else if (new_input.moveDown.endedDown)
-                player.yVel = 100;
-            else
-                player.yVel = 0;
-            if (new_input.moveLeft.endedDown)
-                player.xVel = -100;
-            else if (new_input.moveRight.endedDown)
-                player.xVel = 100;
-            else 
-                player.xVel = 0;
-            if (new_input.action.endedDown)
-                player.col.a += 10;
+#ifdef DEBUG
+            if (newInput.reload.endedDown)
+                LoadGame(&gameLib);
+#endif
 
-            // TODO: generalize rendering
-            SDL_SetRenderDrawColor(renderer_p, 154, 100, 102, 255);
-            SDL_RenderClear(renderer_p);
-            SDL_SetRenderDrawColor(
-                    renderer_p,
-                    player.col.r,
-                    player.col.g,
-                    player.col.b,
-                    player.col.a
-            );
-            SDL_RenderFillRect(renderer_p, &player.rect);
-            SDL_RenderPresent(renderer_p);
+            // find a way to do this based on current fps...?
+            prevCount = currCount;
+            currCount = SDL_GetPerformanceCounter();
 
-            // TODO: get rid of FPS capping
-            while (performanceFrequency / (SDL_GetPerformanceCounter() - startCount) > GOAL_FPS)
-                SDL_Delay(1);
+            // TODO: better fps capping? (currently holds well around 60fps
+            SDL_Delay((1000.0/GOAL_FPS - 1000*((currCount - prevCount)/countPerSec))*0.50);
+            do {
+                currCount = SDL_GetPerformanceCounter();
+            } while (countPerSec/(currCount - prevCount) > GOAL_FPS);
+            newInput.dt = (double)(currCount - prevCount)/countPerSec;
 
-            // TODO: moving is outside of timing
-            MOVE(player, (SDL_GetPerformanceCounter() - startCount)/(double)performanceFrequency);
-            startCount = SDL_GetPerformanceCounter();
-        }
+            if (gameLib.UpdateAndRender_fp)
+                gameLib.UpdateAndRender_fp(&memory, &newInput, renderer_p);
 
+        UnloadGame(&gameLib);
+        TTF_Quit();
         SDL_DestroyRenderer(renderer_p);
         SDL_DestroyWindow(window_p);
         SDL_Quit();
