@@ -21,27 +21,20 @@ NeoBundle 'Shougo/vimproc.vim', {
 
 " Themes
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'daviesjamie/vim-base16-lightline'
 
 " Extensions
-"NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'easymotion/vim-easymotion'
-"NeoBundle 'tpope/vim-sensible'
 NeoBundle 'tpope/vim-fugitive'
-"NeoBundle 'xolox/vim-misc'
-"NeoBundle 'valloric/YouCompleteMe'
-"NeoBundle 'rdnetto/YCM-Generator'
 NeoBundle 'vim-scripts/taglist.vim'
-"NeoBundle 'dkarwowski/a.vim'
 
 " Editing
-"NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-repeat'
-"NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-surround'
-"NeoBundle 'godlygeek/tabular'
+NeoBundle 'godlygeek/tabular'
 NeoBundle 'vimwiki/vimwiki'
 
 " Languages
@@ -107,12 +100,13 @@ set smartcase            " override ignorecase if upper case typed
 " Colours
 " colorscheme termorrow
 syntax enable
+let base16colorspace=256
 set background=dark
-colorscheme hybrid
+colorscheme base16-twilight
 
 " Font
 if has('gui_running')
-    set guifont=Source_Code_Pro:h12
+    set guifont=Source_Code_Pro:h11
 endif
 
 " Status line
@@ -123,7 +117,7 @@ set statusline+=%f      " Path to the file in the buffer
 set statusline+=%m      " Modified flag
 set statusline+=%5{v:register} "Which active register
 set statusline+=%=      " Align to the right from now on
-set statusline+=[%{fugitive#head()}]   " Current branch
+"set statusline+=[%{fugitive#head()}]   " Current branch
 set statusline+=\ \     " Blank space
 set statusline+=%y      " Type of file in the buffer
 set statusline+=%5l     " Current line
@@ -231,20 +225,16 @@ set t_vb=
 "{{{ Plugin Settings
 " -----------------------------------------------------------------------------
 
-" indentLine
-let g:indentLine_color_term = 10
-let g:indentLine_char = '▏' "'│'
-
 " Vimwiki
 let wiki = {}
-let wiki.path = '/Volumes/General/wikis/general'
+let wiki.path = '/media/david/general/wikis/general'
 let wiki.nested_syntaxes = {'python': 'python', 'c': 'c', 'sml': 'sml'}
 let wiki.auto_toc = 1
 let g:vimwiki_list = [wiki]
 
 " Lightline
 let g:lightline={
-    \ 'colorscheme': 'solarized',
+    \ 'colorscheme': 'base16',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
     \ },
@@ -267,23 +257,23 @@ let g:vimfiler_as_default_explorer = 1
 "let g:unite_source_grep_max_candidates = 200
 
 " Let's use ag
-"let g:unite_source_rec_async_command =
-"\ 'ag --follow --nocolor --nogroup --hidden -g ""'
-"let g:unite_source_grep_command = 'ag'
-"let g:unite_source_grep_default_opts =
-"\ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
-"\  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-"let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_rec_async_command =
+\ 'ag --follow --nocolor --nogroup --hidden -g ""'
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts =
+\ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
+\  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+let g:unite_source_grep_recursive_opt = ''
 
 " Custom mappings for the unite buffer
-"autocmd FileType unite call s:unite_settings()
-"function! s:unite_settings()
-  " Enable navigation with control-j and control-k in insert mode
-"  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-"  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-  " Reload directory contents
-"  imap <buffer> <C-r>   <Plug>(unite_redraw)
-"endfunction
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+ " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+ " Reload directory contents
+  imap <buffer> <C-r>   <Plug>(unite_redraw)
+endfunction
 
 "}}}
 
@@ -339,6 +329,10 @@ au BufRead,BufNewFile *.h set ft=c
 " notes stuff added
 au FileType vimwiki let g:indentLine_enabled = 0
 au FileType vimwiki setlocal ts=2 sw=2 sts=2 tw=79
+
+" tex shit
+au FileType tex setlocal ts=2 sw=2 sts=2 tw=79
+au FileType tex set fo+=t
 
 " sml
 au FileType sml let g:indentLine_char = "."

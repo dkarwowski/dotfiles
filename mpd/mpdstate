@@ -1,0 +1,60 @@
+sw_volume: 100
+audio_device_state:1:default
+audio_device_state:0:FIFO
+state: pause
+current: 9
+time: 230.432000
+random: 1
+repeat: 0
+single: 0
+consume: 0
+crossfade: 5
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:Avenged Sevenfold/Hail to the King/1-02 Hail to the King.mp3
+1:AWOLNATION/Megalithic Symphony/1-05 Jump on My Shoulders.mp3
+2:AWOLNATION/Megalithic Symphony/1-10 Sail.mp3
+3:Avenged Sevenfold/Hail to the King/1-02 Hail to the King.mp3
+4:Bowling for Soup/Playlist_ The Very Best of Bow/06 High School Never Ends.mp3
+5:Bowling for Soup/Playlist_ The Very Best of Bow/13 1985.mp3
+6:Falling in Reverse/Fashionably Late/02 Bad Girls Club ft_ Crissy Hend.mp3
+7:Falling in Reverse/Fashionably Late/04 Fashionably Late.mp3
+8:Falling in Reverse/Fashionably Late/08 Game Over.mp3
+9:Falling in Reverse/Fashionably Late/10 Fuck the Rest.mp3
+10:Rise Against/Appeal to Reason/02 Long Forgotten Sons.mp3
+11:Rise Against/Appeal to Reason/04 The Dirt Whispered.mp3
+12:Rise Against/Appeal to Reason/10 Hero of War.mp3
+13:Rise Against/Endgame/02 Help Is on the Way.mp3
+14:Rise Against/Endgame/05 Satellite.mp3
+15:Rise Against/Endgame/12 Endgame.mp3
+16:Rise Against/Long Forgotten Songs_ B-Sides/05 Blind.mp3
+17:Rise Against/The Black Market/04 The Black Market.mp3
+18:Billy Talent/Billy Talent II/02 Red Flag.mp3
+19:Billy Talent/Billy Talent II/06 Fallen Leaves.mp3
+20:Arctic Monkeys/AM/1-01 Do I Wanna Know_.mp3
+21:A Day to Remember/Homesick/1-08 Homesick.mp3
+22:Weezer/Raditude/1-03 That Girl Got Hot.mp3
+23:Zebrahead/Call Your Friends/04 Call Your Friends.mp3
+24:The Black Keys/Brothers/1-04 Howlin' for You.mp3
+25:Neon Trees/Pop Psychology/02 Text Me In the Morning.mp3
+26:Imagine Dragons/Night Visions/01 Radioactive.mp3
+27:Capital Cities/In a Tidal Wave of Mystery/03 Kangaroo Court.mp3
+28:Cage the Elephant/Cage the Elephant/03 Ain't No Rest for the Wicked.mp3
+29:Cage the Elephant/Melophobia/05 Take It or Leave It.mp3
+30:Panic at the Disco/Pretty_ Odd_/02 Nine in the Afternoon.mp3
+31:Panic at the Disco/Pretty_ Odd_/04 Do You Know What I'm Seeing_.mp3
+32:Panic at the Disco/Pretty_ Odd_/09 Pas De Cheval.mp3
+33:Panic! at the Disco/A Fever You Can't Sweat Out/10 I Write Sins Not Tragedies.mp3
+34:Panic! at the Disco/Vices & Virtues/10 Nearly Witches (Ever Since We.mp3
+35:Paramore/Misery Business/01 Misery Business (single versio.mp3
+36:Paramore/Riot!/01 For a Pessimist_ I'm Pretty Op.mp3
+37:Sum 41/All Killer No Filler/04 Fat Lip.mp3
+38:Sum 41/Underclass Hero/01 Underclass Hero.mp3
+39:Sum 41/Underclass Hero/02 Walking Disaster.mp3
+40:Sum 41/Underclass Hero/12 Best of Me.mp3
+41:The Black Keys/Brothers/1-03 Tighten Up.mp3
+42:The Black Keys/Brothers/1-04 Howlin' for You.mp3
+43:The Black Keys/Brothers/1-11 The Go Getter.mp3
+44:The Black Keys/Thickfreakness/02 Hard Row.mp3
+playlist_end

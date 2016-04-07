@@ -1,0 +1,112 @@
+! Hybrid Terminal Colours. Uses the palette from Tomorrow-Night:
+! https://github.com/chriskempson/tomorrow-theme/blob/master/vim/colors/Tomorrow-Night.vim
+! vim: ft=xdefaults
+
+! NOTE: <C-M>c is copy
+! NOTE: <C-M>v is paste
+
+! font & spacing
+URxvt.font: xft:Source Code Pro:size=7px
+URxvt.letterSpace: -1
+! Scrollbar looks. fucking. terrible.
+URxvt.scrollBar: false
+URxvt*scrollTtyKeypress: true
+! No border shit
+URxvt*borderless: true
+! Alt key
+URxvt.modified: meta
+
+! Paging up/down will go with output and not up a screen
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+! Base16 Twilight
+! Scheme: David Hart (http://hart-dev.com)
+
+!#define base00 #1e1e1e
+!#define base01 #323537
+!#define base02 #464b50
+!#define base03 #5f5a60
+!#define base04 #838184
+!#define base05 #a7a7a7
+!#define base06 #c3c3c3
+!#define base07 #ffffff
+!#define base08 #cf6a4c
+!#define base09 #cda869
+!#define base0A #f9ee98
+!#define base0B #8f9d6a
+!#define base0C #afc4db
+!#define base0D #7587a6
+!#define base0E #9b859d
+!#define base0F #9b703f
+
+! Base16 Google
+! Scheme: Seth Wright (http://sethawright.com)
+
+!#define base00 #1d1f21
+!#define base01 #282a2e
+!#define base02 #373b41
+!#define base03 #969896
+!#define base04 #b4b7b4
+!#define base05 #c5c8c6
+!#define base06 #e0e0e0
+!#define base07 #ffffff
+!#define base08 #CC342B
+!#define base09 #F96A38
+!#define base0A #FBA922
+!#define base0B #198844
+!#define base0C #3971ED
+!#define base0D #3971ED
+!#define base0E #A36AC7
+!#define base0F #3971ED
+
+! Base16 Default
+!
+
+#define base00 #181818
+#define base01 #282828
+#define base02 #383838
+#define base03 #585858
+#define base04 #b8b8b8
+#define base05 #d8d8d8
+#define base06 #e8e8e8
+#define base07 #f8f8f8
+#define base08 #ab4642
+#define base09 #dc9656
+#define base0A #f7ca88
+#define base0B #a1b56c
+#define base0C #86c1b9
+#define base0D #7cafc2
+#define base0E #ba8baf
+#define base0F #a16946
+
+*.foreground:   base05
+*.background:   base00
+*.cursorColor:  base05
+
+*.color0:       base00
+*.color1:       base08
+*.color2:       base0B
+*.color3:       base0A
+*.color4:       base0D
+*.color5:       base0E
+*.color6:       base0C
+*.color7:       base05
+
+*.color8:       base03
+*.color9:       base08
+*.color10:      base0B
+*.color11:      base0A
+*.color12:      base0D
+*.color13:      base0E
+*.color14:      base0C
+*.color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+*.color21:      base06
