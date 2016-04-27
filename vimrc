@@ -23,6 +23,8 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'daviesjamie/vim-base16-lightline'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'cocopon/lightline-hybrid.vim'
 
 " Extensions
 NeoBundle 'Shougo/unite.vim'
@@ -100,9 +102,9 @@ set smartcase            " override ignorecase if upper case typed
 " Colours
 " colorscheme termorrow
 syntax enable
-let base16colorspace=256
+"let base16colorspace=256
 set background=dark
-colorscheme base16-solarized
+colorscheme hybrid
 
 " Font
 if has('gui_running')
@@ -187,7 +189,7 @@ let g:vimwiki_list = [wiki]
 
 " Lightline
 let g:lightline={
-    \ 'colorscheme': 'solarized',
+    \ 'colorscheme': 'hybrid',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
     \ },

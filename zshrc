@@ -58,7 +58,7 @@ export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
+#BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
