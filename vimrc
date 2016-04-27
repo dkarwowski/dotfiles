@@ -102,7 +102,7 @@ set smartcase            " override ignorecase if upper case typed
 syntax enable
 let base16colorspace=256
 set background=dark
-colorscheme base16-twilight
+colorscheme base16-solarized
 
 " Font
 if has('gui_running')
@@ -127,10 +127,6 @@ set statusline+=/       " Slash
 set statusline+=%-5L    " Total lines
 set statusline+=%p%%    " Percentage through the file
 
-
-" map <ScrollWheelUp> <C-Y>
-" map <ScrollWheelDown> <C-E>
-
 "}}}
 
 "{{{ Mapping
@@ -142,33 +138,14 @@ let mapleader = " "
 " Tags search goes up
 set tags+=tags;$HOME
 
-" Map : to ; and the other way around
-"nnoremap ; :
-"nnoremap : ;
-
 " Allow for easier escaping
 inoremap jj <Esc>
 
-" Remap Tab to %
-"map <BS> %
-
-" Toggle fold
-"nnoremap <leader><space> za
-
-" Toggle hlsearch for current results
-"nnoremap <leader>h :nohlsearch<CR>
-
-" Alternate mappings
-"nnoremap <leader>as :A<CR>
-"nnoremap <leader>ih :IH<CR>
-"nnoremap <leader>is :IH<CR>:A<CR>
-
 " Search for trailing whitespace
-"nnoremap <leader>w /\s\+$<CR>
 nnoremap <leader>t :%s/\s\+$//<CR>
 
 " Toggle last active bufer
-"nnoremap <leader><Tab> :b#<CR>
+nnoremap <leader><Tab> :b#<CR>
 
 " Delete a buffer without closing the window
 nnoremap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
@@ -186,30 +163,6 @@ nnoremap <leader>P :set invpaste paste?<CR>
 vnoremap <leader>y y:call ClipboardYank()<cr>
 vnoremap <leader>d d:call ClipboardYank()<cr>
 nnoremap <leader>p :call ClipboardPaste()<cr>p
-
-" Quick save
-"nnoremap <leader>s :w<CR>
-
-" Remake ctags
-"nnoremap <leader>T :!update-ctags.sh<CR>
-
-" Shortcut for Tabularize
-"vnoremap <leader>t :Tabularize /
-
-" Check file for errors
-"nnoremap <leader>c :SyntasticCheck<CR>
-
-" Show Quickfix window for Syntastic errors
-"nnoremap <leader>e :Errors<CR>
-
-" Unite.vim
-"nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async<CR>
-"nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<CR>
-"nnoremap <leader>b :<C-u>Unite -no-split -buffer-name=buffer  -start-insert buffer<CR>
-"nnoremap <leader>/ :<C-u>Unite -no-split -buffer-name=buffer  -start-insert grep:.<CR>
-
-" Vimfiler
-"nnoremap <leader><space> :VimFilerExplorer<CR>
 
 " Keep search pattern at the center of the screen
 nnoremap <silent> n nzz
@@ -251,10 +204,6 @@ set laststatus=2
 
 " VimFiler
 let g:vimfiler_as_default_explorer = 1
-
-" Unite
-"let g:unite_source_history_yank_enable = 1
-"let g:unite_source_grep_max_candidates = 200
 
 " Let's use ag
 let g:unite_source_rec_async_command =
