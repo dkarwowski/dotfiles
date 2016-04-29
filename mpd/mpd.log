@@ -20628,3 +20628,495 @@ Apr 27 11:11 : client: [2] opened from 127.0.0.1:36018
 Apr 27 11:11 : client: [2] closed
 Apr 27 11:19 : client: [3] opened from 127.0.0.1:36024
 Apr 27 11:19 : client: [3] closed
+Apr 27 16:31 : client: [0] opened from 127.0.0.1:40478
+Apr 27 16:31 : client: [1] opened from 127.0.0.1:40482
+Apr 27 16:31 : client: [1] closed
+Apr 27 16:31 : client: [2] opened from 127.0.0.1:40486
+Apr 27 16:31 : client: [2] closed
+Apr 27 16:31 : player: played "Arctic Monkeys/Five Minutes With Arctic Monkeys/02 From the Ritz to the Rubble.mp3"
+Apr 27 16:31 : client: [3] opened from 127.0.0.1:40490
+Apr 27 16:31 : client: [3] closed
+Apr 27 16:31 : client: [4] opened from 127.0.0.1:40494
+Apr 27 16:31 : client: [4] closed
+Apr 27 16:31 : client: [5] opened from 127.0.0.1:40498
+Apr 27 16:31 : client: [5] closed
+Apr 27 16:31 : client: [6] opened from 127.0.0.1:40502
+Apr 27 16:31 : client: [6] closed
+Apr 27 16:31 : client: [7] opened from 127.0.0.1:40506
+Apr 27 16:31 : client: [7] closed
+Apr 27 16:32 : client: [8] opened from 127.0.0.1:40512
+Apr 27 16:32 : client: [8] closed
+Apr 27 16:32 : client: [9] opened from 127.0.0.1:40516
+Apr 27 16:32 : client: [9] closed
+Apr 27 16:32 : player: played "Arctic Monkeys/Favourite Worst Nightmare/06 Only Ones Who Know.mp3"
+Apr 27 16:32 : client: [10] opened from 127.0.0.1:40520
+Apr 27 16:32 : client: [10] closed
+Apr 27 16:32 : client: [11] opened from 127.0.0.1:40524
+Apr 27 16:32 : client: [11] closed
+Apr 27 16:32 : player: played "Arctic Monkeys/Fluorescent Adolescent/01 Fluorescent Adolescent.mp3"
+Apr 27 16:32 : client: [12] opened from 127.0.0.1:40528
+Apr 27 16:32 : client: [12] closed
+Apr 27 16:32 : client: [13] opened from 127.0.0.1:40532
+Apr 27 16:32 : client: [13] closed
+Apr 27 16:32 : client: [0] closed
+Apr 27 16:32 : client: [14] opened from 127.0.0.1:40536
+Apr 27 16:32 : client: [15] opened from 127.0.0.1:40540
+Apr 27 16:32 : client: [15] closed
+Apr 27 16:32 : client: [16] opened from 127.0.0.1:40544
+Apr 27 16:32 : client: [16] closed
+Apr 27 16:34 : client: [17] opened from 127.0.0.1:40556
+Apr 27 16:34 : client: [17] closed
+Apr 27 16:34 : client: [18] opened from 127.0.0.1:40560
+Apr 27 16:34 : client: [18] closed
+Apr 27 16:34 : client: [19] opened from 127.0.0.1:40564
+Apr 27 16:34 : client: [19] closed
+Apr 27 16:34 : client: [20] opened from 127.0.0.1:40568
+Apr 27 16:34 : client: [20] closed
+Apr 27 16:34 : client: [21] opened from 127.0.0.1:40572
+Apr 27 16:34 : client: [21] closed
+Apr 27 16:34 : client: [22] opened from 127.0.0.1:40576
+Apr 27 16:34 : client: [22] closed
+Apr 27 16:35 : player: played "Arctic Monkeys/Fluorescent Adolescent/02 The Bakery.mp3"
+Apr 27 16:35 : client: [23] opened from 127.0.0.1:40580
+Apr 27 16:35 : client: [23] closed
+Apr 27 16:36 : client: [24] opened from 127.0.0.1:40586
+Apr 27 16:36 : client: [24] closed
+Apr 27 16:36 : client: [25] opened from 127.0.0.1:40590
+Apr 27 16:36 : client: [25] closed
+Apr 27 16:36 : client: [26] opened from 127.0.0.1:40594
+Apr 27 16:36 : client: [26] closed
+Apr 27 16:36 : client: [27] opened from 127.0.0.1:40598
+Apr 27 16:36 : client: [27] closed
+Apr 27 16:39 : player: played "Arctic Monkeys/Fluorescent Adolescent/03 Plastic Tramp.mp3"
+Apr 27 16:39 : client: [28] opened from 127.0.0.1:40604
+Apr 27 16:39 : client: [28] closed
+Apr 27 16:39 : client: [29] opened from 127.0.0.1:40608
+Apr 27 16:39 : client: [29] closed
+Apr 27 16:39 : client: [30] opened from 127.0.0.1:40612
+Apr 27 16:39 : client: [30] closed
+Apr 27 16:39 : client: [31] opened from 127.0.0.1:40616
+Apr 27 16:39 : client: [31] closed
+Apr 27 16:41 : client: [14] closed
+Apr 27 16:41 : client: [32] opened from 127.0.0.1:40630
+Apr 27 16:41 : client: [33] opened from 127.0.0.1:40634
+Apr 27 16:41 : client: [33] closed
+Apr 27 16:41 : client: [34] opened from 127.0.0.1:40638
+Apr 27 16:41 : client: [34] closed
+Apr 27 16:42 : player: played "Arctic Monkeys/Fluorescent Adolescent/04 Too Much to Ask.mp3"
+Apr 27 16:42 : client: [35] opened from 127.0.0.1:40644
+Apr 27 16:42 : client: [35] closed
+Apr 27 16:42 : client: [36] opened from 127.0.0.1:40648
+Apr 27 16:42 : client: [36] closed
+Apr 27 16:42 : client: [37] opened from 127.0.0.1:40652
+Apr 27 16:42 : client: [37] closed
+Apr 27 16:42 : client: [38] opened from 127.0.0.1:40656
+Apr 27 16:42 : client: [38] closed
+Apr 27 16:42 : client: [39] opened from 127.0.0.1:40662
+Apr 27 16:42 : player: played "Arctic Monkeys/Humbug/01 My Propeller.mp3"
+Apr 27 16:42 : client: [39] closed
+Apr 27 16:42 : client: [40] opened from 127.0.0.1:40666
+Apr 27 16:42 : client: [40] closed
+Apr 27 16:42 : client: [41] opened from 127.0.0.1:40670
+Apr 27 16:42 : client: [41] closed
+Apr 27 16:43 : client: [42] opened from 127.0.0.1:40674
+Apr 27 16:43 : client: [42] closed
+Apr 27 16:43 : client: [43] opened from 127.0.0.1:40678
+Apr 27 16:43 : client: [43] closed
+Apr 27 16:43 : client: [44] opened from 127.0.0.1:40682
+Apr 27 16:43 : player: played "Arctic Monkeys/Humbug/02 Crying Lightning.mp3"
+Apr 27 16:43 : client: [44] closed
+Apr 27 16:43 : client: [45] opened from 127.0.0.1:40686
+Apr 27 16:43 : client: [45] closed
+Apr 27 16:43 : client: [46] opened from 127.0.0.1:40690
+Apr 27 16:43 : client: [46] closed
+Apr 27 16:43 : client: [47] opened from 127.0.0.1:40694
+Apr 27 16:43 : client: [47] closed
+Apr 27 16:43 : client: [48] opened from 127.0.0.1:40698
+Apr 27 16:43 : client: [48] closed
+Apr 27 16:44 : update: removing Arctic Monkeys/Do I Wanna Know_/01 Do I Wanna Know_.mp3
+Apr 27 16:44 : update: removing Arctic Monkeys/Do I Wanna Know_/02 2013.mp3
+Apr 27 16:44 : update: removing Arctic Monkeys/Brianstorm/04 What If You Were Right the First Time_.mp3
+Apr 27 16:44 : update: removing Arctic Monkeys/Black Treacle/02 Richard Hawley & The Death Ramps - You & I.mp3
+Apr 27 16:44 : update: removing Arctic Monkeys/Don't Sit Down 'cause I've Moved Your Chair/03 I.D.S.T..mp3
+Apr 27 16:44 : update: removing Arctic Monkeys/Cornerstone/03 Sketchead.mp3
+Apr 27 16:44 : update: removing Arctic Monkeys/Cornerstone/04 Fright Lined Dining Room.mp3
+Apr 27 16:44 : update: removing Arctic Monkeys/Fluorescent Adolescent/01 Fluorescent Adolescent.mp3
+Apr 27 16:44 : client: [49] opened from 127.0.0.1:40704
+Apr 27 16:44 : player: played "Arctic Monkeys/Humbug/03 Dangerous Animals.mp3"
+Apr 27 16:44 : client: [49] closed
+Apr 27 16:44 : client: [50] opened from 127.0.0.1:40708
+Apr 27 16:44 : client: [50] closed
+Apr 27 16:44 : client: [51] opened from 127.0.0.1:40712
+Apr 27 16:44 : client: [51] closed
+Apr 27 16:45 : client: [52] opened from 127.0.0.1:40716
+Apr 27 16:45 : player: played "Arctic Monkeys/Humbug/04 Secret Door.mp3"
+Apr 27 16:45 : client: [52] closed
+Apr 27 16:45 : client: [53] opened from 127.0.0.1:40720
+Apr 27 16:45 : client: [53] closed
+Apr 27 16:45 : client: [54] opened from 127.0.0.1:40724
+Apr 27 16:45 : client: [54] closed
+Apr 27 16:45 : update: removing Arctic Monkeys/Humbug/07 Cornerstone.mp3
+Apr 27 16:47 : client: [55] opened from 127.0.0.1:40736
+Apr 27 16:47 : player: played "Arctic Monkeys/Humbug/05 Potion Approaching.mp3"
+Apr 27 16:47 : client: [55] closed
+Apr 27 16:47 : client: [56] opened from 127.0.0.1:40740
+Apr 27 16:47 : client: [56] closed
+Apr 27 16:47 : client: [57] opened from 127.0.0.1:40744
+Apr 27 16:47 : client: [57] closed
+Apr 27 16:49 : client: [58] opened from 127.0.0.1:40782
+Apr 27 16:49 : client: [58] closed
+Apr 27 16:49 : client: [59] opened from 127.0.0.1:40786
+Apr 27 16:49 : client: [59] closed
+Apr 27 19:10 : player: played "Arctic Monkeys/Humbug/06 Fire and the Thud.mp3"
+Apr 27 19:10 : client: [0] opened from 127.0.0.1:41576
+Apr 27 19:10 : client: [1] opened from 127.0.0.1:41580
+Apr 27 19:10 : client: [1] closed
+Apr 27 19:16 : client: [2] opened from 127.0.0.1:41590
+Apr 27 19:16 : client: [2] closed
+Apr 27 19:16 : client: [3] opened from 127.0.0.1:41594
+Apr 27 19:16 : client: [3] closed
+Apr 27 19:16 : client: [4] opened from 127.0.0.1:41598
+Apr 27 19:16 : client: [4] closed
+Apr 27 19:16 : client: [5] opened from 127.0.0.1:41602
+Apr 27 19:16 : client: [5] closed
+Apr 27 19:16 : client: [6] opened from 127.0.0.1:41606
+Apr 27 19:16 : client: [6] closed
+Apr 27 19:16 : client: [7] opened from 127.0.0.1:41610
+Apr 27 19:16 : client: [7] closed
+Apr 27 19:16 : client: [8] opened from 127.0.0.1:41614
+Apr 27 19:16 : client: [8] closed
+Apr 27 19:16 : client: [9] opened from 127.0.0.1:41618
+Apr 27 19:16 : client: [9] closed
+Apr 27 19:16 : client: [10] opened from 127.0.0.1:41622
+Apr 27 19:16 : client: [10] closed
+Apr 27 19:17 : client: [11] opened from 127.0.0.1:41626
+Apr 27 19:17 : client: [11] closed
+Apr 27 19:17 : client: [12] opened from 127.0.0.1:41630
+Apr 27 19:17 : client: [12] closed
+Apr 27 19:20 : client: [13] opened from 127.0.0.1:41638
+Apr 27 19:20 : client: [13] closed
+Apr 27 19:20 : client: [14] opened from 127.0.0.1:41642
+Apr 27 19:20 : client: [14] closed
+Apr 27 19:21 : client: [15] opened from 127.0.0.1:41646
+Apr 27 19:21 : client: [15] closed
+Apr 27 19:21 : client: [16] opened from 127.0.0.1:41650
+Apr 27 19:21 : client: [16] closed
+Apr 27 19:21 : client: [17] opened from 127.0.0.1:41654
+Apr 27 19:21 : client: [17] closed
+Apr 27 19:21 : player: played "Arctic Monkeys/Humbug/06 Fire and the Thud.mp3"
+Apr 27 19:21 : client: [18] opened from 127.0.0.1:41658
+Apr 27 19:21 : client: [18] closed
+Apr 27 19:21 : client: [19] opened from 127.0.0.1:41662
+Apr 27 19:21 : client: [19] closed
+Apr 27 19:21 : client: [20] opened from 127.0.0.1:41666
+Apr 27 19:21 : client: [20] closed
+Apr 27 19:21 : client: [21] opened from 127.0.0.1:41670
+Apr 27 19:21 : client: [21] closed
+Apr 27 19:26 : player: played "Arctic Monkeys/Humbug/08 Dance Little Liar.mp3"
+Apr 27 19:26 : client: [22] opened from 127.0.0.1:41686
+Apr 27 19:26 : client: [22] closed
+Apr 27 19:26 : client: [23] opened from 127.0.0.1:41690
+Apr 27 19:26 : client: [23] closed
+Apr 27 19:26 : client: [24] opened from 127.0.0.1:41694
+Apr 27 19:26 : client: [24] closed
+Apr 27 19:26 : client: [25] opened from 127.0.0.1:41698
+Apr 27 19:26 : client: [25] closed
+Apr 27 19:29 : player: played "Arctic Monkeys/Humbug/09 Pretty Visitors.mp3"
+Apr 27 19:29 : client: [26] opened from 127.0.0.1:41704
+Apr 27 19:29 : client: [26] closed
+Apr 27 19:29 : client: [27] opened from 127.0.0.1:41708
+Apr 27 19:29 : client: [27] closed
+Apr 27 19:29 : client: [28] opened from 127.0.0.1:41712
+Apr 27 19:29 : client: [28] closed
+Apr 27 19:29 : client: [29] opened from 127.0.0.1:41716
+Apr 27 19:29 : client: [29] closed
+Apr 27 19:30 : client: [30] opened from 127.0.0.1:41720
+Apr 27 19:30 : client: [30] closed
+Apr 27 19:30 : client: [31] opened from 127.0.0.1:41726
+Apr 27 19:30 : client: [31] closed
+Apr 27 19:30 : client: [32] opened from 127.0.0.1:41730
+Apr 27 19:30 : client: [32] closed
+Apr 27 19:30 : client: [33] opened from 127.0.0.1:41734
+Apr 27 19:30 : client: [33] closed
+Apr 27 19:30 : client: [34] opened from 127.0.0.1:41738
+Apr 27 19:30 : client: [34] closed
+Apr 27 19:30 : client: [35] opened from 127.0.0.1:41742
+Apr 27 19:30 : client: [35] closed
+Apr 27 19:30 : client: [36] opened from 127.0.0.1:41746
+Apr 27 19:30 : client: [36] closed
+Apr 27 19:30 : client: [37] opened from 127.0.0.1:41750
+Apr 27 19:30 : client: [37] closed
+Apr 27 19:30 : client: [38] opened from 127.0.0.1:41754
+Apr 27 19:30 : client: [38] closed
+Apr 27 19:30 : client: [39] opened from 127.0.0.1:41758
+Apr 27 19:30 : client: [39] closed
+Apr 27 19:30 : client: [40] opened from 127.0.0.1:41762
+Apr 27 19:30 : client: [40] closed
+Apr 27 19:30 : client: [41] opened from 127.0.0.1:41766
+Apr 27 19:30 : client: [41] closed
+Apr 27 19:30 : client: [42] opened from 127.0.0.1:41770
+Apr 27 19:30 : client: [42] closed
+Apr 27 19:30 : client: [43] opened from 127.0.0.1:41774
+Apr 27 19:30 : client: [43] closed
+Apr 27 19:30 : client: [44] opened from 127.0.0.1:41778
+Apr 27 19:30 : client: [44] closed
+Apr 27 19:30 : client: [45] opened from 127.0.0.1:41782
+Apr 27 19:30 : client: [45] closed
+Apr 27 19:30 : client: [46] opened from 127.0.0.1:41786
+Apr 27 19:30 : client: [46] closed
+Apr 27 19:30 : client: [47] opened from 127.0.0.1:41790
+Apr 27 19:30 : client: [47] closed
+Apr 27 19:34 : client: [0] closed
+Apr 27 19:34 : client: [48] opened from 127.0.0.1:41806
+Apr 27 19:34 : client: [48] closed
+Apr 27 19:39 : client: [49] opened from 127.0.0.1:41974
+Apr 27 19:39 : client: [50] opened from 127.0.0.1:41978
+Apr 27 19:39 : client: [50] closed
+Apr 27 19:39 : client: [51] opened from 127.0.0.1:41982
+Apr 27 19:39 : client: [51] closed
+Apr 27 19:39 : client: [52] opened from 127.0.0.1:41990
+Apr 27 19:39 : client: [52] closed
+Apr 27 19:39 : client: [53] opened from 127.0.0.1:41994
+Apr 27 19:39 : client: [53] closed
+Apr 27 19:39 : client: [54] opened from 127.0.0.1:41998
+Apr 27 19:39 : client: [54] closed
+Apr 27 19:39 : client: [55] opened from 127.0.0.1:42002
+Apr 27 19:39 : client: [55] closed
+Apr 27 19:39 : client: [56] opened from 127.0.0.1:42006
+Apr 27 19:39 : client: [56] closed
+Apr 27 19:43 : player: played "Arctic Monkeys/Humbug/10 The Jeweller's Hands.mp3"
+Apr 28 07:56 : client: [0] opened from 127.0.0.1:59060
+Apr 28 07:56 : client: [1] opened from 127.0.0.1:59064
+Apr 28 07:56 : client: [1] closed
+Apr 28 07:56 : client: [2] opened from 127.0.0.1:59068
+Apr 28 07:56 : client: [2] closed
+Apr 28 07:57 : client: [3] opened from 127.0.0.1:59074
+Apr 28 07:57 : client: [3] closed
+Apr 28 09:24 : client: [4] opened from 127.0.0.1:59736
+Apr 28 09:24 : client: [4] closed
+Apr 28 11:00 : player: played "Arctic Monkeys/Humbug/10 The Jeweller's Hands.mp3"
+Apr 28 11:10 : client: [0] opened from 127.0.0.1:44668
+Apr 28 11:10 : client: [1] opened from 127.0.0.1:44672
+Apr 28 11:10 : client: [1] closed
+Apr 28 11:10 : client: [2] opened from 127.0.0.1:44676
+Apr 28 11:10 : client: [2] closed
+Apr 28 11:10 : player: played "Arctic Monkeys/Humbug/10 The Jeweller's Hands.mp3"
+Apr 28 11:10 : client: [3] opened from 127.0.0.1:44682
+Apr 28 11:10 : client: [3] closed
+Apr 28 11:10 : client: [4] opened from 127.0.0.1:44686
+Apr 28 11:10 : client: [4] closed
+Apr 28 11:10 : client: [5] opened from 127.0.0.1:44690
+Apr 28 11:10 : client: [5] closed
+Apr 28 11:10 : client: [6] opened from 127.0.0.1:44694
+Apr 28 11:10 : client: [6] closed
+Apr 28 11:14 : player: played "Arctic Monkeys/Humbug/06 Fire and the Thud.mp3"
+Apr 28 11:14 : client: [7] opened from 127.0.0.1:44698
+Apr 28 11:14 : client: [7] closed
+Apr 28 11:14 : client: [8] opened from 127.0.0.1:44702
+Apr 28 11:14 : client: [8] closed
+Apr 28 11:14 : client: [9] opened from 127.0.0.1:44706
+Apr 28 11:14 : client: [9] closed
+Apr 28 11:14 : client: [10] opened from 127.0.0.1:44710
+Apr 28 11:14 : client: [10] closed
+Apr 28 11:16 : client: [11] opened from 127.0.0.1:44714
+Apr 28 11:16 : client: [11] closed
+Apr 28 11:16 : client: [12] opened from 127.0.0.1:44718
+Apr 28 11:16 : client: [12] closed
+Apr 28 11:26 : client: [13] opened from 127.0.0.1:44722
+Apr 28 11:26 : client: [13] closed
+Apr 28 11:26 : client: [14] opened from 127.0.0.1:44726
+Apr 28 11:26 : client: [14] closed
+Apr 28 11:26 : client: [15] opened from 127.0.0.1:44730
+Apr 28 11:26 : client: [15] closed
+Apr 28 11:29 : player: played "Arctic Monkeys/Humbug/08 Dance Little Liar.mp3"
+Apr 28 11:29 : client: [16] opened from 127.0.0.1:44734
+Apr 28 11:29 : client: [16] closed
+Apr 28 11:29 : client: [17] opened from 127.0.0.1:44738
+Apr 28 11:29 : client: [17] closed
+Apr 28 11:29 : client: [18] opened from 127.0.0.1:44742
+Apr 28 11:29 : client: [18] closed
+Apr 28 11:29 : client: [19] opened from 127.0.0.1:44746
+Apr 28 11:29 : client: [19] closed
+Apr 28 11:31 : client: [20] opened from 127.0.0.1:44750
+Apr 28 11:31 : player: played "Arctic Monkeys/Humbug/09 Pretty Visitors.mp3"
+Apr 28 11:31 : client: [20] closed
+Apr 28 11:31 : client: [21] opened from 127.0.0.1:44754
+Apr 28 11:31 : client: [21] closed
+Apr 28 11:31 : client: [22] opened from 127.0.0.1:44758
+Apr 28 11:31 : client: [22] closed
+Apr 28 11:32 : client: [23] opened from 127.0.0.1:44762
+Apr 28 11:32 : client: [23] closed
+Apr 28 11:32 : client: [24] opened from 127.0.0.1:44766
+Apr 28 11:32 : client: [24] closed
+Apr 28 11:32 : player: played "Arctic Monkeys/Humbug/10 The Jeweller's Hands.mp3"
+Apr 28 12:01 : client: [0] opened from 127.0.0.1:46892
+Apr 28 12:01 : client: [0] closed
+Apr 28 12:01 : client: [1] opened from 127.0.0.1:46896
+Apr 28 12:01 : client: [1] closed
+Apr 28 12:01 : client: [2] opened from 127.0.0.1:46900
+Apr 28 12:01 : client: [2] closed
+Apr 28 12:01 : client: [3] opened from 127.0.0.1:46904
+Apr 28 12:01 : client: [4] opened from 127.0.0.1:46908
+Apr 28 12:01 : client: [4] closed
+Apr 28 12:01 : client: [5] opened from 127.0.0.1:46912
+Apr 28 12:01 : client: [5] closed
+Apr 28 12:05 : player: played "Arctic Monkeys/Humbug/10 The Jeweller's Hands.mp3"
+Apr 28 12:05 : client: [6] opened from 127.0.0.1:46984
+Apr 28 12:05 : client: [6] closed
+Apr 28 12:05 : client: [7] opened from 127.0.0.1:46988
+Apr 28 12:05 : client: [7] closed
+Apr 28 12:05 : client: [8] opened from 127.0.0.1:46992
+Apr 28 12:05 : client: [8] closed
+Apr 28 12:05 : client: [9] opened from 127.0.0.1:46996
+Apr 28 12:05 : client: [9] closed
+Apr 28 12:06 : client: [10] opened from 127.0.0.1:47000
+Apr 28 12:06 : client: [11] opened from 127.0.0.1:47004
+Apr 28 12:06 : client: [11] closed
+Apr 28 12:06 : client: [12] opened from 127.0.0.1:47008
+Apr 28 12:06 : client: [12] closed
+Apr 28 12:06 : client: [10] closed
+Apr 28 12:08 : player: played "Arctic Monkeys/I Bet You Look Good on the Dancefloor/01 I Bet You Look Good on the Dancefloor.mp3"
+Apr 28 12:08 : client: [13] opened from 127.0.0.1:47012
+Apr 28 12:08 : client: [13] closed
+Apr 28 12:08 : client: [14] opened from 127.0.0.1:47016
+Apr 28 12:08 : client: [14] closed
+Apr 28 12:08 : client: [15] opened from 127.0.0.1:47020
+Apr 28 12:08 : client: [15] closed
+Apr 28 12:08 : client: [16] opened from 127.0.0.1:47024
+Apr 28 12:08 : client: [16] closed
+Apr 28 12:10 : player: played "Arctic Monkeys/I Bet You Look Good on the Dancefloor/02 Bigger Boys and Stolen Sweethearts.mp3"
+Apr 28 12:10 : client: [17] opened from 127.0.0.1:47030
+Apr 28 12:10 : client: [17] closed
+Apr 28 12:10 : client: [18] opened from 127.0.0.1:47034
+Apr 28 12:10 : client: [18] closed
+Apr 28 12:10 : client: [19] opened from 127.0.0.1:47038
+Apr 28 12:10 : client: [19] closed
+Apr 28 12:10 : client: [20] opened from 127.0.0.1:47042
+Apr 28 12:10 : client: [20] closed
+Apr 28 12:15 : player: played "Arctic Monkeys/I Bet You Look Good on the Dancefloor/03 Chun Li's Spinning Bird Kick.mp3"
+Apr 28 12:15 : client: [21] opened from 127.0.0.1:47050
+Apr 28 12:15 : client: [21] closed
+Apr 28 12:16 : client: [22] opened from 127.0.0.1:47054
+Apr 28 12:16 : client: [22] closed
+Apr 28 12:16 : client: [23] opened from 127.0.0.1:47058
+Apr 28 12:16 : client: [23] closed
+Apr 28 12:16 : client: [24] opened from 127.0.0.1:47062
+Apr 28 12:16 : client: [24] closed
+Apr 28 12:16 : client: [25] opened from 127.0.0.1:47066
+Apr 28 12:16 : client: [25] closed
+Apr 28 12:16 : client: [26] opened from 127.0.0.1:47070
+Apr 28 12:16 : client: [26] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/Fluorescent Adolescent/03 Plastic Tramp.mp3"
+Apr 28 12:16 : client: [27] opened from 127.0.0.1:47074
+Apr 28 12:16 : client: [27] closed
+Apr 28 12:16 : client: [28] opened from 127.0.0.1:47078
+Apr 28 12:16 : client: [28] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/Fluorescent Adolescent/04 Too Much to Ask.mp3"
+Apr 28 12:16 : client: [29] opened from 127.0.0.1:47082
+Apr 28 12:16 : client: [29] closed
+Apr 28 12:16 : client: [30] opened from 127.0.0.1:47086
+Apr 28 12:16 : client: [30] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/Humbug/01 My Propeller.mp3"
+Apr 28 12:16 : client: [31] opened from 127.0.0.1:47090
+Apr 28 12:16 : client: [31] closed
+Apr 28 12:16 : client: [32] opened from 127.0.0.1:47094
+Apr 28 12:16 : client: [32] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/Humbug/02 Crying Lightning.mp3"
+Apr 28 12:16 : client: [33] opened from 127.0.0.1:47098
+Apr 28 12:16 : client: [33] closed
+Apr 28 12:16 : client: [34] opened from 127.0.0.1:47102
+Apr 28 12:16 : client: [34] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/Humbug/03 Dangerous Animals.mp3"
+Apr 28 12:16 : client: [35] opened from 127.0.0.1:47106
+Apr 28 12:16 : client: [35] closed
+Apr 28 12:16 : client: [36] opened from 127.0.0.1:47110
+Apr 28 12:16 : client: [36] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/Humbug/04 Secret Door.mp3"
+Apr 28 12:16 : errno: Failed to open "/home/david/Music/Arctic Monkeys/Humbug/05 Potion Approaching.mp3": No such file or directory
+Apr 28 12:16 : errno: Failed to open "/home/david/Music/Arctic Monkeys/Humbug/05 Potion Approaching.mp3": No such file or directory
+Apr 28 12:16 : player: played "Arctic Monkeys/Humbug/05 Potion Approaching.mp3"
+Apr 28 12:16 : client: [37] opened from 127.0.0.1:47114
+Apr 28 12:16 : client: [37] closed
+Apr 28 12:16 : client: [38] opened from 127.0.0.1:47118
+Apr 28 12:16 : client: [38] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/Humbug/06 Fire and the Thud.mp3"
+Apr 28 12:16 : client: [39] opened from 127.0.0.1:47122
+Apr 28 12:16 : client: [39] closed
+Apr 28 12:16 : client: [40] opened from 127.0.0.1:47126
+Apr 28 12:16 : client: [40] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/Humbug/08 Dance Little Liar.mp3"
+Apr 28 12:16 : client: [41] opened from 127.0.0.1:47130
+Apr 28 12:16 : client: [41] closed
+Apr 28 12:16 : client: [42] opened from 127.0.0.1:47134
+Apr 28 12:16 : client: [42] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/Humbug/09 Pretty Visitors.mp3"
+Apr 28 12:16 : client: [43] opened from 127.0.0.1:47138
+Apr 28 12:16 : client: [43] closed
+Apr 28 12:16 : client: [44] opened from 127.0.0.1:47142
+Apr 28 12:16 : client: [44] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/Humbug/10 The Jeweller's Hands.mp3"
+Apr 28 12:16 : client: [45] opened from 127.0.0.1:47146
+Apr 28 12:16 : client: [45] closed
+Apr 28 12:16 : client: [46] opened from 127.0.0.1:47150
+Apr 28 12:16 : client: [46] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/I Bet You Look Good on the Dancefloor/01 I Bet You Look Good on the Dancefloor.mp3"
+Apr 28 12:16 : errno: Failed to open "/home/david/Music/Arctic Monkeys/I Bet You Look Good on the Dancefloor/02 Bigger Boys and Stolen Sweethearts.mp3": No such file or directory
+Apr 28 12:16 : errno: Failed to open "/home/david/Music/Arctic Monkeys/I Bet You Look Good on the Dancefloor/02 Bigger Boys and Stolen Sweethearts.mp3": No such file or directory
+Apr 28 12:16 : player: played "Arctic Monkeys/I Bet You Look Good on the Dancefloor/02 Bigger Boys and Stolen Sweethearts.mp3"
+Apr 28 12:16 : client: [47] opened from 127.0.0.1:47154
+Apr 28 12:16 : client: [47] closed
+Apr 28 12:16 : client: [48] opened from 127.0.0.1:47158
+Apr 28 12:16 : client: [48] closed
+Apr 28 12:16 : player: played "Arctic Monkeys/I Bet You Look Good on the Dancefloor/03 Chun Li's Spinning Bird Kick.mp3"
+Apr 28 12:16 : client: [49] opened from 127.0.0.1:47162
+Apr 28 12:16 : client: [49] closed
+Apr 28 12:16 : client: [50] opened from 127.0.0.1:47166
+Apr 28 12:16 : client: [50] closed
+Apr 28 12:20 : player: played "Arctic Monkeys/Leave Before the Lights Come On/01 Leave Before the Lights Come On.mp3"
+Apr 28 12:20 : client: [51] opened from 127.0.0.1:47172
+Apr 28 12:20 : client: [51] closed
+Apr 28 12:20 : client: [52] opened from 127.0.0.1:47176
+Apr 28 12:20 : client: [52] closed
+Apr 28 12:20 : client: [53] opened from 127.0.0.1:47180
+Apr 28 12:20 : client: [53] closed
+Apr 28 12:20 : client: [54] opened from 127.0.0.1:47184
+Apr 28 12:20 : client: [54] closed
+Apr 28 12:23 : player: played "Arctic Monkeys/Leave Before the Lights Come On/02 Put Your Dukes Up John.mp3"
+Apr 28 12:23 : client: [55] opened from 127.0.0.1:47188
+Apr 28 12:23 : client: [55] closed
+Apr 28 12:23 : client: [56] opened from 127.0.0.1:47192
+Apr 28 12:23 : client: [56] closed
+Apr 28 12:23 : client: [57] opened from 127.0.0.1:47196
+Apr 28 12:23 : client: [57] closed
+Apr 28 12:23 : client: [58] opened from 127.0.0.1:47200
+Apr 28 12:23 : client: [58] closed
+Apr 28 12:25 : player: played "Arctic Monkeys/Leave Before the Lights Come On/03 Baby I'm Yours.mp3"
+Apr 28 12:25 : client: [59] opened from 127.0.0.1:47208
+Apr 28 12:25 : client: [59] closed
+Apr 28 12:25 : client: [60] opened from 127.0.0.1:47212
+Apr 28 12:25 : client: [60] closed
+Apr 28 12:25 : client: [61] opened from 127.0.0.1:47216
+Apr 28 12:25 : client: [61] closed
+Apr 28 12:25 : client: [62] opened from 127.0.0.1:47220
+Apr 28 12:25 : client: [62] closed
+Apr 28 12:26 : client: [63] opened from 127.0.0.1:47224
+Apr 28 12:26 : client: [63] closed
+Apr 28 12:26 : client: [64] opened from 127.0.0.1:47228
+Apr 28 12:26 : client: [64] closed
+Apr 28 12:26 : player: played "Arctic Monkeys/Matador _ Da Frame 2R/01 Matador.mp3"
+Apr 28 13:53 : client: [0] opened from 127.0.0.1:41246
+Apr 28 13:53 : client: [1] opened from 127.0.0.1:41250
+Apr 28 13:53 : client: [1] closed
+Apr 28 13:53 : client: [2] opened from 127.0.0.1:41254
+Apr 28 13:53 : client: [2] closed
+Apr 28 14:15 : client: [3] opened from 127.0.0.1:41358
+Apr 28 14:15 : client: [3] closed
+Apr 28 14:15 : client: [4] opened from 127.0.0.1:41362
+Apr 28 14:15 : client: [4] closed
+Apr 28 14:24 : client: [5] opened from 127.0.0.1:41400
+Apr 28 14:24 : client: [5] closed
+Apr 28 14:24 : client: [6] opened from 127.0.0.1:41404
+Apr 28 14:24 : client: [6] closed
+Apr 28 15:14 : player: played "Arctic Monkeys/Matador _ Da Frame 2R/01 Matador.mp3"
+Apr 28 19:40 : client: [0] opened from 127.0.0.1:36730
+Apr 28 19:40 : client: [0] closed
