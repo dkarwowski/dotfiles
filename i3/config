@@ -39,8 +39,8 @@ hide_edge_borders none
 font pango:Fantasque Sans Mono 12
 
 # Set some special keys
-bindsym XF86MonBrightnessDown exec "xbacklight -1"
-bindsym XF86MonBrightnessUp exec "xbacklight +1"
+bindsym XF86MonBrightnessDown exec "xbacklight -1 && pkill -RTMIN+2 i3blocks"
+bindsym XF86MonBrightnessUp exec "xbacklight +1 && pkill -RTMIN+2 i3blocks"
 bindsym XF86KbdBrightnessDown exec "synclient MaxTapTime=0"
 bindsym XF86KbdBrightnessUp exec "synclient MaxTapTime=150"
 bindsym XF86AudioPlay exec "mpc toggle"

@@ -21,8 +21,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 
 " Themes
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'daviesjamie/vim-base16-lightline'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'cocopon/lightline-hybrid.vim'
 
