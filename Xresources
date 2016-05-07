@@ -5,6 +5,13 @@
 ! NOTE: <C-M>c is copy
 ! NOTE: <C-M>v is paste
 
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
 ! font & spacing
 URxvt.font: xft:Fantasque Sans Mono:pixelsize=14,xft:Awesome:pixelsize=14
 URxvt.letterSpace: -1
