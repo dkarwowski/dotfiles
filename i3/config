@@ -11,7 +11,7 @@ exec --no-startup-id xrdb $HOME/.Xresources
 exec --no-startup-id sh $HOME/.fehbg
 exec --no-startup-id xbindkeys
 exec --no-startup-id mpd
-exec --no-startup-id synclient MaxTapTime=0
+exec --no-startup-id redshift -l 41.8:-72.2
 
 # colors to bind
 set $gbg #1d1f21
@@ -93,7 +93,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Tab focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -107,7 +107,22 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-# resize window (you can also use the mouse for that) mode "resize" { # These bindings trigger as soon as you enter the resize mode # Pressing left will shrink the window’s width.  # Pressing right will grow the window’s width.  # Pressing up will shrink the window’s height.  # Pressing down will grow the window’s height.  bindsym h resize shrink width 10 px or 10 ppt bindsym j resize grow height 10 px or 10 ppt bindsym k resize shrink height 10 px or 10 ppt bindsym l resize grow width 10 px or 10 ppt # back to normal: Enter or Escape bindsym Return mode "default" bindsym Escape mode "default" } 
+# resize window (you can also use the mouse for that) 
+
+mode "resize" { 
+    # These bindings trigger as soon as you enter the resize mode 
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 5 px or 5 ppt
+    bindsym j resize grow height 5 px or 5 ppt
+    bindsym k resize shrink height 5 px or 5 ppt
+    bindsym l resize grow width 5 px or 5 ppt
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+} 
 
 set $gaps Gaps: (o)uter (i)nner
 set $gaps_outer Outer Gaps [+|-|0] (local), Shift+[+|-|0] (global)
@@ -164,6 +179,7 @@ mode "$system" {
 
 bindsym $mod+g mode "$gaps"
 bindsym $mod+q mode "$system"
+bindsym $mod+r mode "resize"
 
 # Name some workspaces
 set $ws1 "1"

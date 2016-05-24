@@ -59,6 +59,7 @@ set hidden               " hide when switching buffers, don't unload
 set lazyredraw           " don't update screen when executing macros
 set mouse=a              " enable mouse in all modes
 set number               " show absolute line number on current line
+set relativenumber       " show relatively around
 set spelllang=en_us      " spell check with English
 set gdefault             " replace everything by default
 set visualbell           " stop the beep
@@ -230,7 +231,7 @@ endfunction
 " -----------------------------------------------------------------------------
 
 function! ClipboardYank()
-  call system('xclip -selection clipboard', @@)
+  call system('xclip -i -selection clipboard', @@)
 endfunction
 function! ClipboardPaste()
   let @@ = system('xclip -o -selection clipboard')
