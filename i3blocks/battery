@@ -72,7 +72,7 @@ print "$short_text\n";
 if ($status eq 'Discharging') {
 
 	if ($percent < 20) {
-		print "#FF0000\n";
+		print "#fb4934\n";
     }
 
 	if ($percent < 5) {

@@ -12,22 +12,23 @@ exec --no-startup-id sh $HOME/.fehbg
 exec --no-startup-id xbindkeys
 exec --no-startup-id mpd
 exec --no-startup-id redshift -l 41.8:-72.2
+exec --no-startup-id dropbox
 
 # colors to bind
-set $gbg #1d1f21
-set $gfg #c5c8c6
-set $red #a54242
-set $gre #8c9440
-set $blu #5f819d
-set $cya #5e8d87
-set $mag #85678f
-set $yel #de935f
+set_from_resource $gbg color0 #282828
+set_from_resource $gfg color15 #ebdbb2
+set_from_resource $red color9 #fb4934
+set_from_resource $gre color10 #b8bb26
+set_from_resource $yel color11 #fabd2f
+set_from_resource $blu color12 #83a598
+set_from_resource $mag color13 #d3869b
+set_from_resource $cya color14 #8ec07c
 
-# make some colors:     border  backgr. text    indica.
-client.focused          $blu    $blu    $gbg    $blu
-client.focused_inactive $gre    $gre    $gbg    $gre
-client.unfocused        $gbg    $gbg    $gfg    $gbg
-client.urgent           $red    $red    $gbg    $red
+# make some colors:     border  backgr. text    indica. child
+client.focused          $blu    $blu    $gbg    $blu    $blu
+client.focused_inactive $gre    $gre    $gbg    $gre    $gre
+client.unfocused        $gbg    $gbg    $gfg    $gbg    $gbg
+client.urgent           $red    $red    $gbg    $red    $red
 client.background       $gbg
 
 # Appearance
@@ -53,7 +54,7 @@ set $mod Mod4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec st -e tmux new
 
 # kill focused window
 bindsym $mod+Shift+q kill

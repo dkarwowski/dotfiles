@@ -1,51 +1,51 @@
+if &compatible
+    set nocompatible
+endif
 
 "{{{ Load Plugins
 " -----------------------------------------------------------------------------
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
+  set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+" Dein
+call dein#begin(expand('~/.vim/dein'))
 
-" NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" VimProc
-NeoBundle 'Shougo/vimproc.vim', {
-  \ 'build' : {
-  \   'mac' : 'make -f make_mac.mak',
-  \   'unix': 'make -f make_unix.mak'
-  \   }
-  \ }
+call dein#add('Shougo/dein.vim')
 
 " Themes
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'cocopon/lightline-hybrid.vim'
+call dein#add('itchyny/lightline.vim')
+call dein#add('morhetz/gruvbox')
 
 " Extensions
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'easymotion/vim-easymotion'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'vim-scripts/taglist.vim'
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/vimfiler.vim')
+call dein#add('easymotion/vim-easymotion')
+call dein#add('tpope/vim-fugitive')
+call dein#add('vim-scripts/taglist.vim')
+call dein#add('dkarwowski/todo.txt-vim')
 
 " Editing
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'vimwiki/vimwiki'
+call dein#add('tpope/vim-repeat')
+call dein#add('tpope/vim-surround')
+call dein#add('godlygeek/tabular')
+call dein#add('vimwiki/vimwiki')
 
 " Languages
-NeoBundle 'mips.vim'
+call dein#add('mips.vim')
+call dein#add('tikhomirov/vim-glsl')
+call dein#add('rust-lang/rust.vim')
 
-call neobundle#end()
+" End Dein
+call dein#end()
 
 filetype plugin indent on
+syntax enable
 
-" Check for uninstalled plugins
-NeoBundleCheck
+if dein#check_install()
+    call dein#install()
+endif
 
 "}}}
 
@@ -95,6 +95,7 @@ set tabstop=4            " spaces for <Tab>
 
 " Searches
 set hlsearch             " highlight search results
+set incsearch            " incremental search as you type
 set ignorecase           " case insensitive searching
 set smartcase            " override ignorecase if upper case typed
 
@@ -103,11 +104,11 @@ set smartcase            " override ignorecase if upper case typed
 syntax enable
 "let base16colorspace=256
 set background=dark
-colorscheme hybrid
+colorscheme gruvbox
 
 " Font
 if has('gui_running')
-    set guifont=Source_Code_Pro:h11
+    set guifont=Fantasque_Sans_Mono:h11
 endif
 
 " Status line
@@ -182,13 +183,13 @@ set t_vb=
 " Vimwiki
 let wiki = {}
 let wiki.path = '/home/david/wikis/general'
-let wiki.nested_syntaxes = {'python': 'python', 'c': 'c', 'sml': 'sml'}
+let wiki.nested_syntaxes = {'python': 'python', 'c': 'c', 'sml': 'sml', 'js': 'javascript'}
 let wiki.auto_toc = 1
 let g:vimwiki_list = [wiki]
 
 " Lightline
 let g:lightline={
-    \ 'colorscheme': 'hybrid',
+    \ 'colorscheme': 'gruvbox',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
     \ },
@@ -260,6 +261,9 @@ endfunction
 
 "{{{ Autocommands
 " -----------------------------------------------------------------------------
+
+" ensure unix line endings
+au BufRead,BufNewFile * set ff=unix
 
 " Indent rules
 autocmd FileType markdown setlocal ts=4 sw=4 sts=4 tw=79
