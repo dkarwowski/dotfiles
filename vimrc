@@ -267,9 +267,21 @@ au BufRead,BufNewFile * set ff=unix
 
 " Indent rules
 autocmd FileType markdown setlocal ts=4 sw=4 sts=4 tw=79
+autocmd FileType rst setlocal ts=3 sw=3 sts=3 tw=79
+
+" JS standard
+autocmd FileType html setlocal ts=2 sw=2 sts=2
+autocmd FileType javascript setlocal ts=2 sw=2 sts=2
+autocmd FileType json setlocal ts=2 sw=2 sts=2
 
 " Folding rules
 autocmd FileType coffee setlocal foldmethod=indent nofoldenable
+
+augroup XML
+    autocmd!
+    autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
+    autocmd FileType xml setlocal ts=2 sw=2 sts=2 tw=79
+augroup END
 
 " Silverstripe
 au BufNewFile,BufRead *.ss setfiletype xhtml
