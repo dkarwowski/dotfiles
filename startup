@@ -1,0 +1,10 @@
+#!/bin/bash
+
+/usr/bin/cinnamon-settings-daemon &
+(sleep 2; nm-applet) &
+(sleep 2; /usr/share/goobuntu-indicator/goobuntu_indicator.py) &
+(sleep 2; /usr/bin/goobuntu-welcome) &
+gsettings-data-convert &
+(sleep 3; /usr/share/gsysnews/gsysnews-launcher.sh) &
+start-pulseaudio-x11 &
+(sleep 3; cinnamon-sound-applet) &
