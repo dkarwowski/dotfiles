@@ -15,7 +15,7 @@ Xft.rgba: rgb
 ! set the locale
 URxvt*imLocale: "en_US.UTF-8"
 ! font & spacing
-URxvt.font: xft:Fantasque Sans Mono:pixelsize=17,xft:Font Awesome:size=17
+URxvt.font: xft:Fantasque Sans Mono:pixelsize=15,xft:Font Awesome:size=15
 !URxvt.letterSpace: 0
 ! Scrollbar looks. fucking. terrible.
 URxvt.scrollBar: false

@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/david/.oh-my-zsh
+export ZSH=$HOME/.dotfiles/repos/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,12 +49,12 @@ ZSH_THEME="ys"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux tmux)
+plugins=(git ubuntu vi-mode vim-interaction tmux history-substring-search)
 
 # User configuration
 
-export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin:/usr/bin/core_perl"
-export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin:$HOME/.cargo/bin"
+#export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin:/usr/bin/core_perl"
+#export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin:$HOME/.cargo/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -64,8 +64,8 @@ source $ZSH/oh-my-zsh.sh
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # Tmux stuff
-ZSH_TMUX_ATUOSTART=true
-source "$HOME/.gem/ruby/2.3.0/gems/tmuxinator-0.8.1/completion/tmuxinator.zsh"
+#ZSH_TMUX_ATUOSTART=true
+#source "$HOME/.gem/ruby/2.3.0/gems/tmuxinator-0.8.1/completion/tmuxinator.zsh"
 export EDITOR='vim'
 
 # You may need to manually set your language environment
@@ -95,3 +95,5 @@ export EDITOR='vim'
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+source /etc/bash_completion.d/g4d

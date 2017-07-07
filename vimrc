@@ -1,15 +1,87 @@
-if &compatible
-    set nocompatible
-endif
+" Welcome to Vim (http://go/vim).
+"
+" If you see this file, your homedir was just created on this workstation.
+" That means either you are new to Google (in that case, welcome!) or you
+" got yourself a faster machine.
+" Either way, the main goal of this configuration is to help you be more
+" productive; if you have ideas, praise or complaints, direct them to
+" vi-users@google.com (http://g/vi-users). We'd especially like to hear from you
+" if you can think of ways to make this configuration better for the next
+" Noogler.
+" If you want to learn more about Vim at Google, see http://go/vimintro.
 
-"{{{ Load Plugins
-" -----------------------------------------------------------------------------
+" Use the 'google' package by default (see http://go/vim/packages).
+source /usr/share/vim/google/google.vim
+source /usr/share/vim/google/gtags.vim
 
+nnoremap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/= "' . searchtag . '"'<CR> \| :exe 'Gtlist ' . searchtag <CR>
+
+" Plugin configuration.
+" See http://google3/devtools/editors/vim/examples/ for example configurations
+" and http://go/vim/plugins for more information about vim plugins at Google.
+
+" Plugin loading is commented out below - uncomment the plugins you'd like to
+" load.
+
+" Load google's formatting plugins (http://go/vim/plugins/codefmt-google).
+" The default mapping is \= (or <leader>= if g:mapleader has a custom value),
+" with
+" - \== formatting the current line or selected lines in visual mode
+"   (:FormatLines).
+" - \=b formatting the full buffer (:FormatCode).
+"
+" To bind :FormatLines to the same key in insert and normal mode, add:
+"   noremap <C-K> :FormatLines<CR>
+"   inoremap <C-K> <C-O>:FormatLines<CR>
+Glug codefmt plugin[mappings] gofmt_executable="goimports"
+Glug codefmt-google
+
+" Enable autoformatting on save for the languages at Google that enforce
+" formatting, and for which all checked-in code is already conforming (thus,
+" autoformatting will never change unrelated lines in a file).
+"augroup autoformat_settings
+"  " For BUILD files and Go all of Google's files must be formatted.
+"  autocmd FileType bzl AutoFormatBuffer buildifier
+"  autocmd FileType go AutoFormatBuffer gofmt
+"augroup END
+
+" Load YCM (http://go/ycm) for semantic auto-completion and quick syntax
+" error checking. Pulls in a google3-enabled version of YCM itself and
+" a google3-specific default configuration.
+"Glug youcompleteme-google
+
+" Load the automated blaze dependency integration for Go.
+" Note: for Go, blazedeps uses the Go team's glaze tool, which is fully
+" supported by the Go team; for other languages. Note that the plugin is
+" currently unsupported for other languages.
+"Glug blazedeps auto_filetypes=`['go']`
+
+" Load piper integration (http://wiki/Main/VimPerforce).
+Glug piper plugin[mappings]
+
+" Load the Critique integration. Use :h critique for more details.
+"Glug critique plugin[mappings]
+
+" Load blaze integration (http://go/blazevim).
+Glug blaze plugin[mappings]
+
+" Load the syntastic plugin (http://go/vim/plugins/syntastic-google).
+" Note: this requires installing the upstream syntastic plugin from
+" https://github.com/scrooloose/syntastic.
+"Glug syntastic-google
+
+" Load the ultisnips plugin (http://go/ultisnips).
+" Note: this requires installing the upstream ultisnips plugin from
+" https://github.com/SirVer/ultisnips.
+"Glug ultisnips-google
+
+" All of your plugins must be added before the following line.
+
+" -- Non-Google plugins
 if has('vim_starting')
   set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 endif
 
-" Dein
 call dein#begin(expand('~/.vim/dein'))
 
 call dein#add('Shougo/dein.vim')
@@ -22,32 +94,29 @@ call dein#add('morhetz/gruvbox')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimfiler.vim')
 call dein#add('easymotion/vim-easymotion')
-call dein#add('tpope/vim-fugitive')
 call dein#add('vim-scripts/taglist.vim')
-call dein#add('dkarwowski/todo.txt-vim')
 
 " Editing
 call dein#add('tpope/vim-repeat')
 call dein#add('tpope/vim-surround')
 call dein#add('godlygeek/tabular')
-call dein#add('vimwiki/vimwiki')
 
-" Languages
-call dein#add('mips.vim')
-call dein#add('tikhomirov/vim-glsl')
-call dein#add('rust-lang/rust.vim')
-
-" End Dein
 call dein#end()
 
+" Enable file type based indent configuration and syntax highlighting.
+" Note that when code is pasted via the terminal, vim by default does not detect
+" that the code is pasted (as opposed to when using vim's paste mappings), which
+" leads to incorrect indentation when indent mode is on.
+" To work around this, use ":set paste" / ":set nopaste" to toggle paste mode.
+" You can also use a plugin to:
+" - enter insert mode with paste (https://github.com/tpope/vim-unimpaired)
+" - auto-detect pasting (https://github.com/ConradIrwin/vim-bracketed-paste)
 filetype plugin indent on
-syntax enable
+syntax on
 
 if dein#check_install()
-    call dein#install()
+  call dein#install()
 endif
-
-"}}}
 
 "{{{ Settings
 " -----------------------------------------------------------------------------
@@ -83,15 +152,15 @@ set undolevels=1000
 set undoreload=10000
 
 " Folding
-set foldignore=          " don't ignore anything when folding
-set foldlevelstart=99    " no folds closed on open
-set foldmethod=marker    " collapse code using markers
+"set foldignore=          " don't ignore anything when folding
+"set foldlevelstart=99    " no folds closed on open
+"set foldmethod=marker    " collapse code using markers
 
 " Tabs
-set expandtab            " replace tabs with spaces
-set shiftwidth=4         " spaces for autoindenting
-set softtabstop=4        " spaces for editing, e.g. <Tab> or <BS>
-set tabstop=4            " spaces for <Tab>
+"set expandtab            " replace tabs with spaces
+"set shiftwidth=4         " spaces for autoindenting
+"set softtabstop=4        " spaces for editing, e.g. <Tab> or <BS>
+"set tabstop=4            " spaces for <Tab>
 
 " Searches
 set hlsearch             " highlight search results
@@ -144,13 +213,13 @@ set tags+=tags;$HOME
 inoremap jj <Esc>
 
 " Search for trailing whitespace
-nnoremap <leader>t :%s/\s\+$//<CR>
+"nnoremap <leader>t :%s/\s\+$//<CR>
 
 " Toggle last active bufer
-nnoremap <leader><Tab> :b#<CR>
+"nnoremap <leader><Tab> :b#<CR>
 
 " Delete a buffer without closing the window
-nnoremap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
+"nnoremap <leader>d :bp<bar>sp<bar>bn<bar>bd<CR>
 
 " Remember selection when indenting
 vnoremap > >gv
@@ -180,22 +249,14 @@ set t_vb=
 "{{{ Plugin Settings
 " -----------------------------------------------------------------------------
 
-" Vimwiki
-let wiki = {}
-let wiki.path = '/home/david/wikis/general'
-let wiki.nested_syntaxes = {'python': 'python', 'c': 'c', 'sml': 'sml', 'js': 'javascript'}
-let wiki.auto_toc = 1
-let g:vimwiki_list = [wiki]
-
 " Lightline
 let g:lightline={
     \ 'colorscheme': 'gruvbox',
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+    \   'left': [ [ 'mode', 'paste' ], [ 'filename' ] ]
     \ },
     \ 'component_function': {
-    \   'readonly': 'LightLineReadOnly',
-    \   'fugitive': 'LightLineFugitive'
+    \   'readonly': 'LightLineReadOnly'
     \ },
     \ 'separator': { 'left': "", 'right': "" },
     \ 'subseparator': { 'left': "│", 'right': "│" }
@@ -242,14 +303,6 @@ function! LightLineReadOnly()
     return &ft !~? 'help\|vimfiler' && &readonly ? "\ue0a2" : ""
 endfunction
 
-function! LightLineFugitive()
-    if &ft !~? 'vimfiler' && exists("*fugitive#head")
-        let _ = fugitive#head()
-        return strlen(_) ? "\ue0a0 "._ : ""
-    endif
-    return ''
-endfunction
-
 function! ResCur()
     if line("'\"") <= line("$")
         normal! g`"
@@ -261,50 +314,6 @@ endfunction
 
 "{{{ Autocommands
 " -----------------------------------------------------------------------------
-
-" ensure unix line endings
-au BufRead,BufNewFile * set ff=unix
-
-" Indent rules
-autocmd FileType markdown setlocal ts=4 sw=4 sts=4 tw=79
-autocmd FileType rst setlocal ts=3 sw=3 sts=3 tw=79
-
-" JS standard
-autocmd FileType html setlocal ts=2 sw=2 sts=2
-autocmd FileType javascript setlocal ts=2 sw=2 sts=2
-autocmd FileType json setlocal ts=2 sw=2 sts=2
-
-" Folding rules
-autocmd FileType coffee setlocal foldmethod=indent nofoldenable
-
-augroup XML
-    autocmd!
-    autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
-    autocmd FileType xml setlocal ts=2 sw=2 sts=2 tw=79
-augroup END
-
-" Silverstripe
-au BufNewFile,BufRead *.ss setfiletype xhtml
-
-" JSON
-au BufRead,BufNewFile *.json setfiletype json
-
-" H files are C
-au BufRead,BufNewFile *.h set ft=c
-
-" Prolog files
-au BufRead,BufNewFile *.pro set ft=prolog
-
-" notes stuff added
-au FileType vimwiki let g:indentLine_enabled = 0
-au FileType vimwiki setlocal ts=2 sw=2 sts=2 tw=79
-
-" tex shit
-au FileType tex setlocal ts=2 sw=2 sts=2 tw=79
-au FileType tex set fo+=t
-
-" sml
-au FileType sml let g:indentLine_char = "."
 
 " restore cursor
 augroup resCur
