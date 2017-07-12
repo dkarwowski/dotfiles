@@ -97,3 +97,8 @@ export EDITOR='vim'
 export PATH="$PATH:$HOME/.rvm/bin"
 
 source /etc/bash_completion.d/g4d
+
+# Handle ssh properly (always attach to a specific tmux session)
+if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
+	tmx attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+fi

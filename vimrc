@@ -23,6 +23,12 @@ nnoremap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/
 " Plugin loading is commented out below - uncomment the plugins you'd like to
 " load.
 
+" Load Grok to handle proper jumping around google3.
+" Handles this by relationships (references, definitions, declarations, call
+" stack) to easily navigate usage of a function.
+" Seems better than Gtags...
+Glug grok
+
 " Load google's formatting plugins (http://go/vim/plugins/codefmt-google).
 " The default mapping is \= (or <leader>= if g:mapleader has a custom value),
 " with
@@ -88,7 +94,8 @@ call dein#add('Shougo/dein.vim')
 
 " Themes
 call dein#add('itchyny/lightline.vim')
-call dein#add('morhetz/gruvbox')
+call dein#add('chriskempson/base16-vim')
+call dein#add('daviesjamie/vim-base16-lightline')
 
 " Extensions
 call dein#add('Shougo/unite.vim')
@@ -173,7 +180,7 @@ set smartcase            " override ignorecase if upper case typed
 syntax enable
 "let base16colorspace=256
 set background=dark
-colorscheme gruvbox
+colorscheme base16-default-dark
 
 " Font
 if has('gui_running')
@@ -251,7 +258,7 @@ set t_vb=
 
 " Lightline
 let g:lightline={
-    \ 'colorscheme': 'gruvbox',
+    \ 'colorscheme': 'base16',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'filename' ] ]
     \ },
