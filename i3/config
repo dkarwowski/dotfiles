@@ -18,13 +18,13 @@ exec --no-startup-id pasystray
 
 # colors to bind
 set_from_resource $gbg color0 #282828
-set_from_resource $gfg color15 #ebdbb2
-set_from_resource $red color9 #fb4934
-set_from_resource $gre color10 #b8bb26
-set_from_resource $yel color11 #fabd2f
-set_from_resource $blu color12 #83a598
-set_from_resource $mag color13 #d3869b
-set_from_resource $cya color14 #8ec07c
+set_from_resource $gfg color7 #ebdbb2
+set_from_resource $red color1 #fb4934
+set_from_resource $gre color2 #b8bb26
+set_from_resource $yel color3 #fabd2f
+set_from_resource $blu color4 #83a598
+set_from_resource $mag color14 #d3869b
+set_from_resource $cya color6 #8ec07c
 
 # make some colors:     border  backgr. text    indica. child
 client.focused          $blu    $blu    $gbg    $blu    $blu

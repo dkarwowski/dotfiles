@@ -95,7 +95,7 @@ call dein#add('Shougo/dein.vim')
 " Themes
 call dein#add('itchyny/lightline.vim')
 call dein#add('chriskempson/base16-vim')
-call dein#add('daviesjamie/vim-base16-lightline')
+call dein#add('dkarwowski/vim-base16-lightline')
 
 " Extensions
 call dein#add('Shougo/unite.vim')
