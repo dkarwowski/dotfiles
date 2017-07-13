@@ -16,7 +16,8 @@ call dein#add('Shougo/dein.vim')
 
 " Themes
 call dein#add('itchyny/lightline.vim')
-call dein#add('morhetz/gruvbox')
+call dein#add('chriskempson/base16-vim')
+call dein#add('dkarwowski/vim-base16-lightline')
 
 " Extensions
 call dein#add('Shougo/unite.vim')
@@ -104,7 +105,7 @@ set smartcase            " override ignorecase if upper case typed
 syntax enable
 "let base16colorspace=256
 set background=dark
-colorscheme gruvbox
+colorscheme base16-default-dark
 
 " Font
 if has('gui_running')
@@ -189,7 +190,7 @@ let g:vimwiki_list = [wiki]
 
 " Lightline
 let g:lightline={
-    \ 'colorscheme': 'gruvbox',
+    \ 'colorscheme': 'base16',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
     \ },
