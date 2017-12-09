@@ -1,88 +1,3 @@
-" Welcome to Vim (http://go/vim).
-"
-" If you see this file, your homedir was just created on this workstation.
-" That means either you are new to Google (in that case, welcome!) or you
-" got yourself a faster machine.
-" Either way, the main goal of this configuration is to help you be more
-" productive; if you have ideas, praise or complaints, direct them to
-" vi-users@google.com (http://g/vi-users). We'd especially like to hear from you
-" if you can think of ways to make this configuration better for the next
-" Noogler.
-" If you want to learn more about Vim at Google, see http://go/vimintro.
-
-" Use the 'google' package by default (see http://go/vim/packages).
-source /usr/share/vim/google/google.vim
-source /usr/share/vim/google/gtags.vim
-
-nnoremap <C-]> :exe 'let searchtag= "' . expand('<cword>') . '"' \| :exe 'let @/= "' . searchtag . '"'<CR> \| :exe 'Gtlist ' . searchtag <CR>
-
-" Plugin configuration.
-" See http://google3/devtools/editors/vim/examples/ for example configurations
-" and http://go/vim/plugins for more information about vim plugins at Google.
-
-" Plugin loading is commented out below - uncomment the plugins you'd like to
-" load.
-
-" Load Grok to handle proper jumping around google3.
-" Handles this by relationships (references, definitions, declarations, call
-" stack) to easily navigate usage of a function.
-" Seems better than Gtags...
-Glug grok
-
-" Load google's formatting plugins (http://go/vim/plugins/codefmt-google).
-" The default mapping is \= (or <leader>= if g:mapleader has a custom value),
-" with
-" - \== formatting the current line or selected lines in visual mode
-"   (:FormatLines).
-" - \=b formatting the full buffer (:FormatCode).
-"
-" To bind :FormatLines to the same key in insert and normal mode, add:
-"   noremap <C-K> :FormatLines<CR>
-"   inoremap <C-K> <C-O>:FormatLines<CR>
-Glug codefmt plugin[mappings] gofmt_executable="goimports"
-Glug codefmt-google
-
-" Enable autoformatting on save for the languages at Google that enforce
-" formatting, and for which all checked-in code is already conforming (thus,
-" autoformatting will never change unrelated lines in a file).
-"augroup autoformat_settings
-"  " For BUILD files and Go all of Google's files must be formatted.
-"  autocmd FileType bzl AutoFormatBuffer buildifier
-"  autocmd FileType go AutoFormatBuffer gofmt
-"augroup END
-
-" Load YCM (http://go/ycm) for semantic auto-completion and quick syntax
-" error checking. Pulls in a google3-enabled version of YCM itself and
-" a google3-specific default configuration.
-"Glug youcompleteme-google
-
-" Load the automated blaze dependency integration for Go.
-" Note: for Go, blazedeps uses the Go team's glaze tool, which is fully
-" supported by the Go team; for other languages. Note that the plugin is
-" currently unsupported for other languages.
-"Glug blazedeps auto_filetypes=`['go']`
-
-" Load piper integration (http://wiki/Main/VimPerforce).
-Glug piper plugin[mappings]
-
-" Load the Critique integration. Use :h critique for more details.
-"Glug critique plugin[mappings]
-
-" Load blaze integration (http://go/blazevim).
-Glug blaze plugin[mappings]
-
-" Load the syntastic plugin (http://go/vim/plugins/syntastic-google).
-" Note: this requires installing the upstream syntastic plugin from
-" https://github.com/scrooloose/syntastic.
-"Glug syntastic-google
-
-" Load the ultisnips plugin (http://go/ultisnips).
-" Note: this requires installing the upstream ultisnips plugin from
-" https://github.com/SirVer/ultisnips.
-"Glug ultisnips-google
-
-" All of your plugins must be added before the following line.
-
 " -- Non-Google plugins
 if has('vim_starting')
   set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
@@ -102,11 +17,15 @@ call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimfiler.vim')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('vim-scripts/taglist.vim')
+call dein#add('tpope/vim-fugitive')
 
 " Editing
 call dein#add('tpope/vim-repeat')
 call dein#add('tpope/vim-surround')
 call dein#add('godlygeek/tabular')
+
+" Languages
+call dein#add('fatih/vim-go')
 
 call dein#end()
 
@@ -164,10 +83,10 @@ set undoreload=10000
 "set foldmethod=marker    " collapse code using markers
 
 " Tabs
-"set expandtab            " replace tabs with spaces
-"set shiftwidth=4         " spaces for autoindenting
-"set softtabstop=4        " spaces for editing, e.g. <Tab> or <BS>
-"set tabstop=4            " spaces for <Tab>
+set expandtab            " replace tabs with spaces
+set shiftwidth=2         " spaces for autoindenting
+set softtabstop=2        " spaces for editing, e.g. <Tab> or <BS>
+set tabstop=2            " spaces for <Tab>
 
 " Searches
 set hlsearch             " highlight search results
@@ -293,6 +212,10 @@ function! s:unite_settings()
  " Reload directory contents
   imap <buffer> <C-r>   <Plug>(unite_redraw)
 endfunction
+
+" Go
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
 
 "}}}
 

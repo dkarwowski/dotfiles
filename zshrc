@@ -49,7 +49,7 @@ ZSH_THEME="ys"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ubuntu vi-mode vim-interaction tmux history-substring-search)
+plugins=(git archlinux vi-mode vim-interaction tmux history-substring-search)
 
 # User configuration
 
@@ -96,9 +96,7 @@ export EDITOR='vim'
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-source /etc/bash_completion.d/g4d
-
 # Handle ssh properly (always attach to a specific tmux session)
 if [[ -z "$TMUX" ]] && [ "$SSH_CONNECTION" != "" ]; then
-	tmx attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+	tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
