@@ -5,9 +5,7 @@ endif
 "{{{ Load Plugins
 " -----------------------------------------------------------------------------
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 " Dein
 call dein#begin(expand('~/.vim/dein'))
@@ -34,9 +32,10 @@ call dein#add('godlygeek/tabular')
 call dein#add('vimwiki/vimwiki')
 
 " Languages
-call dein#add('mips.vim')
+call dein#add('vim-scripts/mips.vim')
 call dein#add('tikhomirov/vim-glsl')
 call dein#add('rust-lang/rust.vim')
+call dein#add('fatih/vim-go')
 
 " End Dein
 call dein#end()
