@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/david/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -49,13 +49,18 @@ ZSH_THEME="ys"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux tmux history-substring-search)
+plugins=(git archlinux tmux history-substring-search vi-mode)
 
 # User configuration
 #
 export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin:/usr/bin/core_perl"
 export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin:$HOME/.cargo/bin:$HOME/go/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+# Tmux stuff
+ZSH_TMUX_AUTOSTART=true
+#source "$HOME/.gem/ruby/2.3.0/gems/tmuxinator-0.8.1/completion/tmuxinator.zsh"
+export EDITOR='vim'
 
 source $ZSH/oh-my-zsh.sh
 #BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
@@ -69,7 +74,3 @@ export ZSH_TMUX_AUTOSTART=true
 export EDITOR='vim'
 export GO111MODULE=auto
 export GOPATH=$HOME/go
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
