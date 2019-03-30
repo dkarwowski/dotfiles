@@ -22,8 +22,6 @@ call dein#add('dkarwowski/vim-base16-lightline')
 " Extensions
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/vimfiler.vim')
-call dein#add('easymotion/vim-easymotion')
-call dein#add('tpope/vim-fugitive')
 call dein#add('vim-scripts/taglist.vim')
 call dein#add('dkarwowski/todo.txt-vim')
 
@@ -31,12 +29,12 @@ call dein#add('dkarwowski/todo.txt-vim')
 call dein#add('tpope/vim-repeat')
 call dein#add('tpope/vim-surround')
 call dein#add('godlygeek/tabular')
-call dein#add('vimwiki/vimwiki')
 
 " Languages
 call dein#add('mips.vim')
 call dein#add('tikhomirov/vim-glsl')
 call dein#add('rust-lang/rust.vim')
+call dein#add('fatih/vim-go')
 
 " End Dein
 call dein#end()
@@ -90,9 +88,9 @@ set foldmethod=marker    " collapse code using markers
 
 " Tabs
 set expandtab            " replace tabs with spaces
-set shiftwidth=4         " spaces for autoindenting
-set softtabstop=4        " spaces for editing, e.g. <Tab> or <BS>
-set tabstop=4            " spaces for <Tab>
+set shiftwidth=2         " spaces for autoindenting
+set softtabstop=2        " spaces for editing, e.g. <Tab> or <BS>
+set tabstop=2            " spaces for <Tab>
 
 " Searches
 set hlsearch             " highlight search results
@@ -104,8 +102,8 @@ set smartcase            " override ignorecase if upper case typed
 " colorscheme termorrow
 syntax enable
 "let base16colorspace=256
-set background=dark
-colorscheme base16-default-dark
+set background=light
+colorscheme base16-google-light
 
 " Font
 if has('gui_running')
@@ -264,7 +262,7 @@ endfunction
 " -----------------------------------------------------------------------------
 
 " ensure unix line endings
-au BufRead,BufNewFile * set ff=unix
+"au BufRead,BufNewFile * set ff=unix
 
 " Indent rules
 autocmd FileType markdown setlocal ts=4 sw=4 sts=4 tw=79
@@ -312,5 +310,9 @@ augroup resCur
     autocmd!
     autocmd BufWinEnter * call ResCur()
 augroup END
+
+" format golang on write.
+" autocmd FileType go autocmd BufWritePre <buffer> GoFmt
+autocmd FileType go set fo+=c fo+=r fo+=o
 
 "}}}

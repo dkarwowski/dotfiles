@@ -10,9 +10,9 @@ exec --no-startup-id volumeicon
 exec --no-startup-id xrdb $HOME/.Xresources
 exec --no-startup-id sh $HOME/.fehbg
 exec --no-startup-id xbindkeys
-exec --no-startup-id mpd
+#exec --no-startup-id mpd
 exec --no-startup-id redshift -l 41.8:-72.2
-exec --no-startup-id dropbox
+#exec --no-startup-id dropbox
 
 # colors to bind
 set_from_resource $gbg color0 #282828
@@ -54,12 +54,12 @@ set $mod Mod4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st -e tmux new
+bindsym $mod+Return exec st
 
 # kill focused window
 bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -fn 'Fantasque Sans Mono-12' -lh 21 -nb "$gbg" -nf "$gfg" -sb "$blu" -sf "$gbg"
+bindsym $mod+d exec dmenu_run -fn 'Fantasque Sans Mono-14' -lh 25 -nb "$gbg" -nf "$gfg" -sb "$blu" -sf "$gbg"
 
 # change focus
 bindsym $mod+h focus left
@@ -128,9 +128,6 @@ mode "resize" {
 set $gaps Gaps: (o)uter (i)nner
 set $gaps_outer Outer Gaps [+|-|0] (local), Shift+[+|-|0] (global)
 set $gaps_inner Inner Gaps [+|-|0] (local), Shift+[+|-|0] (global)
-
-gaps inner 20
-gaps outer 0
 
 mode "$gaps" {
     bindsym o mode "$gaps_outer"
@@ -224,7 +221,7 @@ assign [class="(?i)evince"] $ws2
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    font pango:Fantasque Sans Mono 12
+    font pango:Fantasque Sans Mono 15
     strip_workspace_numbers no
     separator_symbol " "
     tray_output eDP1
