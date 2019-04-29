@@ -5,13 +5,13 @@ endif
 "{{{ Load Plugins
 " -----------------------------------------------------------------------------
 
-set runtimepath+=/home/david/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('/home/david/.cache/dein')
-  call dein#begin('/home/david/.cache/dein')
+if dein#load_state('$HOME/.cache/dein')
+  call dein#begin('$HOME/.cache/dein')
 
   " Let dein manage dein
-  call dein#add('/home/david/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
 
 	" Themes
 	call dein#add('itchyny/lightline.vim')
@@ -214,7 +214,7 @@ set t_vb=
 
 " Vimwiki
 let wiki = {}
-let wiki.path = '/home/david/wikis/general'
+let wiki.path = '$HOME/wikis/general'
 let wiki.nested_syntaxes = {'python': 'python', 'c': 'c', 'sml': 'sml', 'js': 'javascript'}
 let wiki.auto_toc = 1
 let g:vimwiki_list = [wiki]

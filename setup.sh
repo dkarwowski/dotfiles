@@ -35,22 +35,26 @@ popd
 
 pushd $DIR/st
 
+git reset --hard HEAD
 git apply ../st-personalized.patch
 make config.h
 make
 sudo make install
+git reset --hard HEAD
 
 popd
 
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/dein-installer.sh
+sh /tmp/dein-installer.sh $HOME/.cache/dein
+
 for file in ${files[*]}; do
+  rm $HOME/.$file
   ln -s $DIR/$file $HOME/.$file
 done
 
 for config in ${configs[*]}; do
+  rm -rf $HOME/.config/$config
   ln -s $DIR/$config $HOME/.config/$config
 done
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/dein-installer.sh
-sh /tmp/dein-installer.sh ~/.config/dein
