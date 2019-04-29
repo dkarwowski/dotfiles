@@ -1,0 +1,76 @@
+{
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "tabbed",
+    "percent": 0.688461538461538,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 504,
+               "width": 800,
+               "x": 0,
+               "y": 0
+            },
+            "name": "tmux",
+            "percent": 0.5,
+            "swallows": [
+               {
+                   "class": "^st\\-256color$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    "border": "pixel",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.311538461538462,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 600,
+               "width": 800,
+               "x": 50,
+               "y": 50
+            },
+            "name": "Netflix - qutebrowser",
+            "percent": 0.45,
+            "swallows": [
+               {
+                   "class": "^qutebrowser$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 600,
+               "width": 800,
+               "x": 50,
+               "y": 50
+            },
+            "name": "Gmail",
+            "percent": 0.55,
+            "swallows": [
+               {
+                   "class": "^qutebrowser$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}

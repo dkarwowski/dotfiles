@@ -5,14 +5,12 @@
 # this file and re-run i3-config-wizard(1).
 #
 
-exec --no-startup-id nm-applet
-exec --no-startup-id volumeicon
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id sh $HOME/.fehbg
+
 exec --no-startup-id xrdb $HOME/.Xresources
-exec --no-startup-id sh $HOME/.fehbg
 exec --no-startup-id xbindkeys
-#exec --no-startup-id mpd
 exec --no-startup-id redshift -l 41.8:-72.2
-#exec --no-startup-id dropbox
 
 # colors to bind
 set_from_resource $gbg color0 #282828
@@ -32,7 +30,7 @@ client.urgent           $red    $red    $gbg    $red    $red
 client.background       $gbg
 
 # Appearance
-new_window pixel 0
+new_window pixel 1
 hide_edge_borders none
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -54,12 +52,12 @@ set $mod Mod4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st
+bindsym $mod+Return exec st -e tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -fn 'Fantasque Sans Mono-14' -lh 25 -nb "$gbg" -nf "$gfg" -sb "$blu" -sf "$gbg"
+bindsym $mod+d exec dmenu_run -fn 'iosevka-14' -lh 31 -nb "$gbg" -nf "$gfg" -sb "$blu" -sf "$gbg"
 
 # change focus
 bindsym $mod+h focus left
@@ -124,6 +122,9 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 } 
+
+gaps inner 10
+smart_borders on
 
 set $gaps Gaps: (o)uter (i)nner
 set $gaps_outer Outer Gaps [+|-|0] (local), Shift+[+|-|0] (global)
@@ -210,33 +211,3 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-
-# customize all of the actual applications
-
-#assign [class="(?i)firefox"] $ws2
-#assign [class="(?i)google-chrome"] $ws3
-assign [class="(?i)feh"] $ws2
-assign [class="(?i)evince"] $ws2
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    font pango:Fantasque Sans Mono 15
-    strip_workspace_numbers no
-    separator_symbol " "
-    tray_output eDP1
-    position top
-    status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
-    tray_padding 0
-
-    colors {
-        background          $gbg
-        statusline          $gfg
-        separator           $gfg
-
-        focused_workspace   $blu $blu $gbg
-        active_workspace    $gre $gre $gbg
-        inactive_workspace  $yel $yel $gbg
-        urgent_workspace    $red $red $gbg
-    }
-}

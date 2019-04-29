@@ -57,20 +57,22 @@ export PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:
 export PATH="$PATH:$HOME/.gem/ruby/2.4.0/bin:$HOME/.cargo/bin:$HOME/go/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# Tmux stuff
-ZSH_TMUX_AUTOSTART=true
 #source "$HOME/.gem/ruby/2.3.0/gems/tmuxinator-0.8.1/completion/tmuxinator.zsh"
 export EDITOR='vim'
 
 source $ZSH/oh-my-zsh.sh
-#BASE16_SHELL="$HOME/.config/base16-shell/base16-solarized.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # Tmux stuff
 export ZSH_TMUX_AUTOSTART=true
 # source "$HOME/.gem/ruby/2.3.0/gems/tmuxinator-0.8.1/completion/tmuxinator.zsh"
-export EDITOR='vim'
+export EDITOR='nvim'
 export GO111MODULE=auto
 export GOPATH=$HOME/go
+alias vim=nvim

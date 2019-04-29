@@ -5,37 +5,49 @@ endif
 "{{{ Load Plugins
 " -----------------------------------------------------------------------------
 
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=/home/david/.cache/dein/repos/github.com/Shougo/dein.vim
 
-" Dein
-call dein#begin(expand('~/.vim/dein'))
+if dein#load_state('/home/david/.cache/dein')
+  call dein#begin('/home/david/.cache/dein')
 
-call dein#add('Shougo/dein.vim')
+  " Let dein manage dein
+  call dein#add('/home/david/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-" Themes
-call dein#add('itchyny/lightline.vim')
-call dein#add('chriskempson/base16-vim')
-call dein#add('dkarwowski/vim-base16-lightline')
+	" Themes
+	call dein#add('itchyny/lightline.vim')
+	call dein#add('chriskempson/base16-vim')
+	call dein#add('dkarwowski/vim-base16-lightline')
 
-" Extensions
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/vimfiler.vim')
-call dein#add('vim-scripts/taglist.vim')
-call dein#add('dkarwowski/todo.txt-vim')
+	" Extensions
+	call dein#add('Shougo/unite.vim')
+	call dein#add('Shougo/vimfiler.vim')
+	call dein#add('vim-scripts/taglist.vim')
+	call dein#add('dkarwowski/todo.txt-vim')
 
-" Editing
-call dein#add('tpope/vim-repeat')
-call dein#add('tpope/vim-surround')
-call dein#add('godlygeek/tabular')
+	" Editing
+	call dein#add('tpope/vim-repeat')
+	call dein#add('tpope/vim-surround')
+	call dein#add('godlygeek/tabular')
 
-" Languages
-call dein#add('vim-scripts/mips.vim')
-call dein#add('tikhomirov/vim-glsl')
-call dein#add('rust-lang/rust.vim')
-call dein#add('fatih/vim-go')
+  " Autocomplete
+	call dein#add('Shougo/deoplete.nvim')
+	if !has('nvim')
+		call dein#add('roxma/nvim-yarp')
+		call dein#add('roxma/vim-hug-neovim-rpc')
+	endif
+	let g:deoplete#enable_at_startup = 1
+  call dein#add('deoplete-plugins/deoplete-go')
+  call dein#add('sebastianmarkow/deoplete-rust')
 
-" End Dein
-call dein#end()
+	" Languages
+	call dein#add('vim-scripts/mips.vim')
+	call dein#add('tikhomirov/vim-glsl')
+	call dein#add('rust-lang/rust.vim')
+	call dein#add('fatih/vim-go')
+
+  call dein#end()
+  call dein#save_state()
+endif
 
 filetype plugin indent on
 syntax enable
@@ -63,21 +75,39 @@ set visualbell           " stop the beep
 set colorcolumn=120       " for cleaner code
 set nowrap               " no softwrapping
 
-" cursor position for saving
-set viminfo='10,\"100,:20,%,n~/.viminfo
+if has('nvim')
+  " cursor position for saving
+  set viminfo='10,\"100,:20,%,n~/.config/nvim/info
 
-" Backup swap files
-set backup
-set backupdir=~/.vim/tmp
-set backupskip=/tmp/*,/private/tmp/*
-set directory=~/.vim/tmp
-set writebackup
+  " Backup swap files
+  set backup
+  set backupdir=~/.cache/nvim/tmp
+  set backupskip=/tmp/*,/private/tmp/*
+  set directory=~/.cache/nvim/tmp
+  set writebackup
 
-" Infinite undo
-set undofile
-set undodir=~/.vim/undo
-set undolevels=1000
-set undoreload=10000
+  " Infinite undo
+  set undofile
+  set undodir=~/.cache/nvim/undo
+  set undolevels=1000
+  set undoreload=10000
+else
+  " cursor position for saving
+  set viminfo='10,\"100,:20,%,n~/.viminfo
+
+  " Backup swap files
+  set backup
+  set backupdir=~/.vim/tmp
+  set backupskip=/tmp/*,/private/tmp/*
+  set directory=~/.vim/tmp
+  set writebackup
+
+  " Infinite undo
+  set undofile
+  set undodir=~/.vim/undo
+  set undolevels=1000
+  set undoreload=10000
+endif
 
 " Folding
 set foldignore=          " don't ignore anything when folding
@@ -99,9 +129,14 @@ set smartcase            " override ignorecase if upper case typed
 " Colours
 " colorscheme termorrow
 syntax enable
-"let base16colorspace=256
-set background=light
-colorscheme base16-google-light
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+else
+  set background=light
+  colorscheme base16-google-light
+endif
 
 " Font
 if has('gui_running')
