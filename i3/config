@@ -57,7 +57,7 @@ bindsym $mod+Return exec st -e tmux
 # kill focused window
 bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -fn 'iosevka-14' -lh 31 -nb "$gbg" -nf "$gfg" -sb "$blu" -sf "$gbg"
+bindsym $mod+d exec dmenu_run -fn 'iosevka term-12' -lh 31 -nb "$gbg" -nf "$gfg" -sb "$blu" -sf "$gbg"
 
 # change focus
 bindsym $mod+h focus left
@@ -168,7 +168,7 @@ mode "$gaps_inner" {
 set $system System: (p)oweroff, (l)ock, (r)eboot, (e)xit
 
 mode "$system" {
-    bindsym l           exec "/home/david/.local/bin/fuzzy_lock.sh"; mode "default"
+    bindsym l           exec "$HOME/.config/i3lock/fuzzy_lock.sh"; mode "default"
     bindsym p           exec systemctl poweroff; mode "default"
     bindsym r           exec systemctl reboot; mode "default"
     bindsym e           exec i3-msg exit; mode "default"

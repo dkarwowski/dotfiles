@@ -12,6 +12,7 @@ files=(
 configs=(
   base16-shell
   i3
+  i3lock
   nvim
   polybar
   qutebrowser
@@ -36,10 +37,12 @@ popd
 pushd $DIR/st
 
 git reset --hard HEAD
+rm config.h
 git apply ../st-personalized.patch
-make config.h
 make
 sudo make install
+make clean
+rm config.h
 git reset --hard HEAD
 
 popd
