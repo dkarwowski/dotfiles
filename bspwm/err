@@ -1,0 +1,13 @@
+Waiting for initial location to become available...
+polybar|notice:  Parsing config file: /home/david/.config/polybar/config
+polybar|notice:  pulseaudio: using default sink alsa_output.pci-0000_00_1f.3.analog-stereo
+polybar|error: Disabling module "eth" (reason: Invalid network interface "net0")
+polybar|notice:  Loaded font "Iosevka Term:pixelsize=12" (name=Iosevka Term, offset=1, file=/usr/share/fonts/TTF/iosevka-term-regular.ttf)
+polybar|notice:  Loaded font "unifont:fontformat=truetype:size=10:antialias=false" (name=Unifont, offset=0, file=/usr/share/fonts/Unifont/Unifont.ttf)
+polybar|notice:  Loaded font "siji:pixelsize=20" (name=siji, offset=1, file=/usr/share/fonts/misc/siji.ttf)
+erresc: unknown csi ESC[>c
+erresc: unknown csi ESC[>q
+erresc: unknown str ESC]10
+erresc: unknown str ESC]11
+erresc: unknown str ESC]12
+erresc: unknown private set/reset mode 7727

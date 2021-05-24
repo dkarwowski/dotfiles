@@ -20,7 +20,6 @@ if dein#load_state('$HOME/.cache/dein')
 
 	" Extensions
 	call dein#add('Shougo/unite.vim')
-	call dein#add('Shougo/vimfiler.vim')
 	call dein#add('vim-scripts/taglist.vim')
 	call dein#add('dkarwowski/todo.txt-vim')
 
@@ -74,6 +73,13 @@ set gdefault             " replace everything by default
 set visualbell           " stop the beep
 set colorcolumn=120       " for cleaner code
 set nowrap               " no softwrapping
+
+" Netrw config
+let g:netrw_errorlvl = 2
+let g:netrw_preview  = 1
+let g:netrw_listsize = 3
+let g:netrw_winsize  = 30
+let g:netrw_banner   = 0
 
 if has('nvim')
   " cursor position for saving
@@ -236,9 +242,6 @@ let g:lightline={
 "    \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
 set laststatus=2
 
-" VimFiler
-let g:vimfiler_as_default_explorer = 1
-
 " Let's use ag
 let g:unite_source_rec_async_command =
 \ 'ag --follow --nocolor --nogroup --hidden -g ""'
@@ -271,7 +274,7 @@ function! ClipboardPaste()
 endfunction
 
 function! LightLineReadOnly()
-    return &ft !~? 'help\|vimfiler' && &readonly ? "\ue0a2" : ""
+    return &ft !~? 'help\|vimfiler\|netrw' && &readonly ? "\ue0a2" : ""
 endfunction
 
 function! LightLineFugitive()

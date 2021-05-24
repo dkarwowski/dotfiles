@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+echo "killing services..."
+
+pkill sxhkd
+pkill redshift
+pkill polybar
+
+echo "setting monitors..."
+
+bspc monitor -d term web etc
+
+echo $(bspc query -D --names)
+
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a google-chrome desktop='^2'
+bspc rule -a firefox:Toolkit sticky=on state=floating
+
+echo "launching services..."
+
+sxhkd &
+$HOME/.config/polybar/launch.sh &
+$HOME/.fehbg &
+redshift -l 41.8:-72.2 &
